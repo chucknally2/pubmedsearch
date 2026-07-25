@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-chxbi/zAF2GUsg3rjFxOZzt76neP6ucG1EPxl8gq+iE='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-uDIy6CJ5NLNcVDY6dxsf5PsMFX36YBzeT7xDQDDXTqw='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -1174,7 +1174,7 @@ button:not(:disabled):active { filter: brightness(0.95); }
 
     <!-- Coach feedback -->
     <div id="build-coach-card" class="card" style="display:none;border-color:#f59e0b33">
-      <div class="card-label" style="color:var(--ev-warn-text)">&#128172; Methodology notes</div>
+      <div class="card-label" style="color:var(--ev-warn-text)">&#128172; Methodology notes <span style="font-size:10px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ev-text-dim)">&mdash; the model&rsquo;s critique of its own draft</span></div>
       <div id="build-coach"></div>
     </div>
 
@@ -1195,7 +1195,7 @@ button:not(:disabled):active { filter: brightness(0.95); }
       </details>
       <details style="margin-top:9px">
         <summary style="cursor:pointer;font-size:11px;color:var(--ev-link-2);user-select:none">Paywalled databases &mdash; copy &amp; paste <span style="color:var(--ev-text-dim)">(Ovid Embase &middot; Cochrane CENTRAL &middot; Web of Science)</span></summary>
-        <div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin:7px 0">These interfaces have no public search API, so paste the translated strategy into their own search page and run it there; record the retrieved counts in your PRISMA flow alongside the databases searched here. &#9888;&#65039; <b>Ovid:</b> subject headings are translated mechanically from MeSH &mdash; <b>verify each <span style="font-family:'IBM Plex Mono',monospace">exp &hellip;/</span> line against Emtree</b> (Embase&rsquo;s own thesaurus) and remap where the vocabularies differ. <b>CENTRAL</b> indexes MeSH natively so headings carry over as-is; no RCT filter line is added because CENTRAL is already a register of controlled trials. <b>Web of Science</b> indexes no subject vocabulary at all, so every heading becomes a free-text topic phrase &mdash; check the word variants. The Web of Science tab in the workbench can import your exported records straight into the pool.</div>
+        <div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin:7px 0">These databases are subscription-only, with no public search API, so Evidentum cannot search them for you: paste the translated strategy into your institution&rsquo;s own interface, run it there, then bring the records back with <b>&#8595; Import records</b> on the Results tab (choose the matching source) so they join the pool with full deduplication and PRISMA provenance. &#9888;&#65039; <b>Ovid Embase:</b> subject headings are translated mechanically from MeSH &mdash; <b>verify each <span style="font-family:'IBM Plex Mono',monospace">exp &hellip;/</span> line against Emtree</b> (Embase&rsquo;s own thesaurus) and remap where the vocabularies differ. <b>CENTRAL</b> indexes MeSH natively so headings carry over as-is; no RCT filter line is added because CENTRAL is already a register of controlled trials. <b>Web of Science</b> indexes no subject vocabulary at all, so every heading becomes a free-text topic phrase searched as an exact phrase &mdash; read it for missing word variants.</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0 2px">
           <span style="font-size:11px;color:var(--ev-text-body);font-weight:600">Ovid &middot; Embase <span style="font-size:10px;color:var(--ev-text-dim);font-weight:400">(Advanced Search)</span></span>
           <button data-evclick="h48" style="font-size:11px;padding:5px 11px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer">&#128203; Copy Ovid</button>
@@ -1390,7 +1390,6 @@ button:not(:disabled):active { filter: brightness(0.95); }
           <button class="wb-tab"        data-wbtab="keyword" data-evclick="h70">&#129504; Semantic Scholar</button>
           <button class="wb-tab"        data-wbtab="clinicaltrials" data-evclick="h71">&#129514; ClinicalTrials.gov</button>
           <button class="wb-tab"        data-wbtab="openalex" data-evclick="h72">&#127760; OpenAlex</button>
-          <button class="wb-tab"        data-wbtab="wos"      data-evclick="h188" title="Web of Science Core Collection — translated strategy, run in the WoS interface, results imported into the pool">&#128376;&#65039; Web of Science</button>
         </div>
 
         <!-- PubMed panel (includes set-history builder) -->
@@ -1424,7 +1423,6 @@ button:not(:disabled):active { filter: brightness(0.95); }
         <div class="wb-panel" id="wbpanel-keyword"><div id="wb-input-keyword"></div></div>
         <div class="wb-panel" id="wbpanel-clinicaltrials"><div id="wb-input-clinicaltrials"></div></div>
         <div class="wb-panel" id="wbpanel-openalex"><div id="wb-input-openalex"></div></div>
-        <div class="wb-panel" id="wbpanel-wos"><div id="wb-input-wos"></div></div>
 
         <!-- Pool box — its own prominent box below the query panels: the assembled,
              de-duplicated set you've built. "See results" screens it. -->
@@ -5791,10 +5789,14 @@ function meshTermsToSynonyms(list, heading, cap) {
 function picoInputs() {
   function dv(id){ const el = document.getElementById(id); return el ? (el.value || '').trim() : ''; }
   return {
-    p: (document.getElementById('pico-p').value || '').trim(),
-    i: (document.getElementById('pico-i').value || '').trim(),
-    c: (document.getElementById('pico-c').value || '').trim(),
-    o: (document.getElementById('pico-o').value || '').trim(),
+    // Every field goes through dv(): the four PICO boxes used to dereference
+    // .value directly, so picoInputs() threw outright if it ran before the Build
+    // tab's DOM existed — turning a missing input into an exception rather than
+    // an empty question. Same values in the app, where the elements always exist.
+    p: dv('pico-p'),
+    i: dv('pico-i'),
+    c: dv('pico-c'),
+    o: dv('pico-o'),
     design: getSelectedDesigns(),
     dateFrom: dv('build-date-from'),
     dateTo: dv('build-date-to'),
@@ -5952,9 +5954,7 @@ async function buildDraftStrategy() {
     renderBuildCoach();
     document.getElementById('build-blocks-card').style.display = 'block';
     document.getElementById('build-count-card').style.display = 'block';
-    const pressCard = document.getElementById('press-card');
-    if (pressCard) pressCard.style.display = 'block';
-    assembleBuildQuery();
+    assembleBuildQuery();   // renderPressPanel decides whether a strategy exists to review
     // The model's MeSH headings are only a CLAIM until verified \u2014 an LLM can emit a
     // plausible heading that isn't in the thesaurus, which silently retrieves nothing.
     // So cross-reference every proposed heading against the live NCBI index right now,
@@ -6237,12 +6237,20 @@ function renderBuildCoach() {
     return '<div style="font-size:12px;color:var(--ev-text-2);margin-bottom:6px;line-height:1.5">\u2022 ' + esc(n) + '</div>';
   }).join('');
   if (buildCoachSuggestions.length) {
-    html += '<div style="display:flex;align-items:center;gap:8px;margin:11px 0 8px;padding-top:10px;border-top:1px solid var(--ev-border-soft)">'
-      + '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--ev-text-muted)">Suggested terms to add</span>'
+    html += '<div style="display:flex;align-items:center;gap:8px;margin:11px 0 4px;padding-top:10px;border-top:1px solid var(--ev-border-soft)">'
+      + '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--ev-text-muted)">Second-pass additions</span>'
+      + '<span style="font-size:10px;color:var(--ev-warn-text);border:1px solid currentColor;border-radius:10px;padding:1px 7px">not yet in the search</span>'
       + '<button ' + evAttr('click', 'applyAllBuildSuggestions')
       + ' style="margin-left:auto;font-size:10px;padding:3px 11px;border-radius:6px;border:1px solid #16a34a55;background:var(--ev-ok-bg);color:var(--ev-ok-text);cursor:pointer;font-family:Inter,sans-serif;font-weight:600" '
-      + 'title="Add every suggested term to its concept block">+ Add all (' + buildCoachSuggestions.length + ')</button>'
-      + '</div>';
+      + 'title="Add every term below to its concept block">＋ Accept all (' + buildCoachSuggestions.length + ')</button>'
+      + '</div>'
+      // Why these sit outside the draft: the model re-reads its own blocks and lists
+      // what it missed. Adding a term changes what the search retrieves, so it is the
+      // reviewer's call — the strategy stays the reviewer's artifact, which is the
+      // assumption PRESS peer review is built on.
+      + '<div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin-bottom:9px">'
+      + 'The model re-read the draft above and found these gaps. They are held back rather than added silently, '
+      + 'because every added term changes what the search retrieves &mdash; accept the ones that belong to your question.</div>';
     html += buildCoachSuggestions.map(function(sg, i){
       const label = PICO_ROLE_LABEL[sg.role] || sg.concept || 'search';
       return '<div style="display:flex;align-items:baseline;gap:8px;margin-bottom:5px">'
@@ -7101,8 +7109,7 @@ var WB_META = {
   scopus:         { label: 'Scopus',             icon: '\ud83d\udc53' },
   semantic:       { label: 'Semantic Scholar',   icon: '\ud83e\udde0' },
   openalex:       { label: 'OpenAlex',           icon: '\ud83c\udf10' },
-  clinicaltrials: { label: 'ClinicalTrials.gov', icon: '\ud83e\uddea' },
-  wos:            { label: 'Web of Science',     icon: '\ud83d\udd78\ufe0f' }
+  clinicaltrials: { label: 'ClinicalTrials.gov', icon: '\ud83e\uddea' }
 };
 
 // Groups share one query bar per syntax family. Members keep individual pool
@@ -7284,130 +7291,6 @@ function renderWbPanels() {
       '<div id="wbnote-' + gid + '" style="margin-top:6px;font-size:10px;line-height:1.6"></div>';
   });
   Object.keys(WB_GROUPS).forEach(function(gid){ if (typeof evRenderWbNote === 'function') evRenderWbNote(gid); });
-  renderWosPanel();
-}
-
-// ── Web of Science (no API — export/import) ──────────────────────────────────
-// Clarivate's WoS APIs reject browser CORS preflights (verified live: no
-// Access-Control-Allow-Origin on OPTIONS or GET), so WoS cannot be searched from
-// the page the way the other databases are. Its workbench panel instead shows the
-// strategy TRANSLATED to WoS Core Collection advanced syntax, opens the WoS
-// advanced search to run it, and imports the exported records as a first-class
-// pool slice — dedup, PRISMA per-database provenance and the search report treat
-// it exactly like an API database.
-
-// The WoS query in force right now: derived live from the concept blocks (the
-// single source of truth) when a Build strategy exists; else whatever a protocol
-// fill placed in wbQueries.wos; else a TS=() wrap of the PubMed bar's keyword
-// derivation as a last resort for bar-only sessions.
-function wosCurrentStrategy() {
-  if (typeof buildBlocks !== 'undefined' && buildBlocks.length) return wosSingleLineQuery(buildBlocks, picoInputs());
-  if ((wbQueries.wos || '').trim()) return wbQueries.wos.trim();
-  const pubmedQ = ((document.getElementById('wbq-pubmed') || {}).value || '').trim() || (wbQueries.pubmed || '').trim();
-  if (!pubmedQ) return '';
-  const base = deriveSecondaryQuery(pubmedQ) || pubmedQ;
-  return base ? 'TS=(' + base + ')' : '';
-}
-
-function copyWosWbStrategy() {
-  const q = wosCurrentStrategy();
-  if (!q) { showToast('Build a strategy first — the WoS translation derives from it', '#f59e0b'); return; }
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(q).then(function(){ showToast('Web of Science strategy copied', '#22c55e'); },
-      function(){ showToast('Copy failed', '#ef4444'); });
-  }
-}
-
-function renderWosPanel() {
-  const host = document.getElementById('wb-input-wos');
-  if (!host) return;
-  const slice = poolSlices.wos;
-  const status = slice
-    ? '<span style="font-size:10px;color:var(--ev-ok-text)" title="imported records in the pool">✓ ' + slice.count + '</span>'
-    : '<span style="font-size:10px;color:var(--ev-text-dim)">—</span>';
-  const q = wosCurrentStrategy();
-  host.innerHTML =
-    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">' +
-      '<span style="font-size:12px;font-weight:600;color:var(--ev-text-body)">🕸️ Web of Science</span>' +
-      '<span style="font-size:10px;color:var(--ev-ai-text);border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px">WoS Core Collection advanced</span>' +
-      '<span style="margin-left:auto;display:inline-flex;gap:6px;flex-wrap:wrap">' +
-        '<label style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--ev-text-2);border:1px solid var(--ev-border);border-radius:6px;padding:4px 9px;cursor:default">🕸️ Web of Science ' + status + '</label>' +
-      '</span>' +
-    '</div>' +
-    '<div style="font-size:11px;color:var(--ev-text-dim);margin-bottom:7px;line-height:1.5">Web of Science has no browser-reachable search API, so it runs in its own interface: ' +
-      '<b>1)</b> copy the translated strategy below, <b>2)</b> run it in WoS Advanced Search (Core Collection), <b>3)</b> export the records (RIS, or tab-delimited/CSV) and import them here — they join the pool as the Web of Science slice with full dedup and PRISMA provenance. ' +
-      '⚠️ Subject headings are translated to free-text topic phrases (WoS has no MeSH) — exact phrases are searched, so review the strategy for missing word variants.</div>' +
-    '<div id="wbq-wos-view" style="font-size:12px;color:var(--ev-text-2);font-family:\'IBM Plex Mono\',monospace;background:var(--ev-surface);border:1px solid var(--ev-border-soft);border-radius:6px;padding:10px 13px;line-height:1.6;word-break:break-word;margin-bottom:8px">' +
-      (q ? esc(q) : '<span style="color:var(--ev-text-dim)">(build a strategy in the Build tab — the WoS translation derives from your concept blocks)</span>') + '</div>' +
-    '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-      '<button ' + evAttr('click', 'copyWosWbStrategy') + ' style="font-size:12px;padding:9px 14px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer;white-space:nowrap">📋 Copy strategy</button>' +
-      '<button ' + evAttr('click', 'evOpenExternal', ['https://www.webofscience.com/wos/woscc/advanced-search']) + ' style="font-size:12px;padding:9px 14px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer;white-space:nowrap">↗ Open Web of Science</button>' +
-      '<label style="font-size:12px;padding:9px 16px;border-radius:6px;border:none;background:#2563eb;color:#fff;cursor:pointer;font-weight:600;white-space:nowrap">⬇ Import results → add to pool' +
-        '<input type="file" accept=".ris,.nbib,.txt,.csv" multiple ' + evAttr('change', 'importWosPoolRecords', [], ['self']) + ' style="display:none"></label>' +
-    '</div>' +
-    '<div id="wbstatus-wos" style="margin-top:8px;font-size:11px;min-height:6px"></div>';
-}
-
-// File-input handler for the WoS panel: parse the export (RIS or CSV — same
-// bounded parsers as the Results-tab import), then land it as the wos pool slice
-// with replace semantics, recording the strategy in force as the slice query.
-function importWosPoolRecords(input) {
-  let files = input && input.files ? Array.prototype.slice.call(input.files) : [];
-  if (!files.length) return;
-  if (files.length > EV_LIMITS.maxFilesPerOp) {
-    logIssue('search', 'Too many files selected (' + files.length + '; limit ' + EV_LIMITS.maxFilesPerOp + ')',
-             'Only the first ' + EV_LIMITS.maxFilesPerOp + ' were read. Split the import into smaller batches.');
-    files = files.slice(0, EV_LIMITS.maxFilesPerOp);
-  }
-  files = files.filter(function(file) {
-    const err = evFileSizeError(file, EV_LIMITS.textImportMaxBytes, file.name);
-    if (err) { logIssue('search', err, 'RIS/CSV exports are text — this is far larger than any real record set.'); }
-    return !err;
-  });
-  if (!files.length) { input.value = ''; return; }
-  const statusEl = document.getElementById('wbstatus-wos');
-  if (statusEl) statusEl.innerHTML = '<span class="spinner"></span> reading Web of Science export…';
-  let pending = files.length, collected = [], seq = 0;
-  files.forEach(function(file) {
-    const reader = new FileReader();
-    reader.onload = function() {
-      try {
-        const textData = String(reader.result || '');
-        const head = textData.slice(0, 2000);
-        const isRis = /\.(ris|nbib)$/i.test(file.name) ||
-                    (!/\.csv$/i.test(file.name) && /(^|\n)\s*TY\s{0,3}-\s/.test(head));
-        const recs = isRis ? parseRisRecords(textData) : parseTabularRecords(textData);
-        recs.forEach(function(rec){ collected.push(makeImportedPaper(rec, 'Web of Science', seq++)); });
-      } catch (e) {
-        logIssue('search', 'Could not parse ' + file.name + ' — ' + (e && e.message || 'unreadable'),
-                 'Export the records again from Web of Science as RIS or CSV and retry.');
-      }
-      if (--pending === 0) finishWosPoolImport(collected);
-    };
-    reader.onerror = function() { if (--pending === 0) finishWosPoolImport(collected); };
-    reader.readAsText(file);
-  });
-  input.value = '';
-}
-
-function finishWosPoolImport(records) {
-  if (!records.length) {
-    const st = document.getElementById('wbstatus-wos');
-    if (st) st.innerHTML = '<span style="color:#ef4444">✕ no records found — check the file is a Web of Science RIS or CSV export</span>';
-    showToast('No records found in the Web of Science export', '#f59e0b');
-    return;
-  }
-  records.forEach(function(p, i){ p._retrievalRank = i; });
-  const replacing = !!poolSlices.wos;
-  const q = wosCurrentStrategy() || '(strategy run externally in Web of Science)';
-  poolSlices.wos = { query: q, results: records, count: records.length, total: null, time: new Date().toLocaleString() };
-  logWbSearch('wos', q, records.length, replacing);
-  recomputePool();
-  renderWbPanels();                                 // re-renders the panel (badge + status host)
-  switchWbTab('wos');
-  const st = document.getElementById('wbstatus-wos');
-  if (st) st.innerHTML = '<span style="color:var(--ev-ok-text)">✓ Web of Science: ' + records.length + ' record' + (records.length === 1 ? '' : 's') + ' imported' + (replacing ? ' (replaced)' : '') + '</span>';
-  showToast('Web of Science: ' + records.length + ' record' + (records.length === 1 ? '' : 's') + ' added to the pool' + (replacing ? ' (slice replaced)' : ''), '#22c55e');
 }
 
 // Prefill a group's query from the PubMed strategy, translated to its syntax.
@@ -7534,11 +7417,7 @@ function addAllForDb(id) {
 function recomputePool() {
   const order = ['pubmed','cochrane','europepmc','semantic','openalex','scopus','clinicaltrials'];
   const arrays = order.map(function(id){ return (poolSlices[id] && poolSlices[id].results) || []; });
-  // Web of Science records are imported exports, so they ride the dedup's
-  // imported-records position: merged LAST, adding their source label to any
-  // record an API database already found.
-  const wosArr = (poolSlices.wos && poolSlices.wos.results) || [];
-  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0) + wosArr.length;
+  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0);
   poolMerged = deduplicatePapers(
     arrays[order.indexOf('pubmed')],
     arrays[order.indexOf('cochrane')],
@@ -7546,8 +7425,7 @@ function recomputePool() {
     arrays[order.indexOf('semantic')],
     arrays[order.indexOf('openalex')],
     arrays[order.indexOf('scopus')],
-    arrays[order.indexOf('clinicaltrials')],
-    wosArr
+    arrays[order.indexOf('clinicaltrials')]
   );
   const dupes = rawTotal - poolMerged.length;
   const searchCount = Object.keys(poolSlices).length;
@@ -7665,7 +7543,7 @@ function logWbSearch(id, query, count, replacing) {
 
 var PROTOCOL_FORMAT = 'evidentum-search-protocol/v1';
 var PROTOCOL_GROUPS = { pubmed:['pubmed'], epmc:['europepmc','cochrane'], scopus:['scopus'], keyword:['semantic'], clinicaltrials:['clinicaltrials'], openalex:['openalex'] };
-var PROTOCOL_GROUP_LABEL = { pubmed:'PubMed', epmc:'Europe PMC + Cochrane', scopus:'Scopus', keyword:'Semantic Scholar', clinicaltrials:'ClinicalTrials.gov', openalex:'OpenAlex', wos:'Web of Science (run externally)' };
+var PROTOCOL_GROUP_LABEL = { pubmed:'PubMed', epmc:'Europe PMC + Cochrane', scopus:'Scopus', keyword:'Semantic Scholar', clinicaltrials:'ClinicalTrials.gov', openalex:'OpenAlex' };
 var PROTO_BTN = 'font-size:12px;padding:8px 13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-2);cursor:pointer';
 
 // Pure: assemble the PubMed string from a stored skeleton. Mirrors buildPubmedQuery()
@@ -7871,26 +7749,12 @@ function wosDateClause(pico) {
   return 'PY=(' + (yf || '1900') + '-' + (yt || new Date().getFullYear()) + ')';
 }
 
-// Single-line Web of Science Core Collection advanced query — the executable
-// artifact for the workbench bar / pool slice: each concept group is one TS=(…)
-// clause, AND-combined, then the design clause and PY= window. Derived from the
-// SAME conceptGroupsWith grouping as every other engine, so it can never disagree
-// with the PubMed strategy about which concepts are searched. Pure → unit-tested.
-function wosSingleLineQuery(blocks, pico) {
-  const groups = conceptGroupsWith(blocks, pico, wosTermStr, true);
-  if (!groups.length) return '';
-  let q = groups.map(function(g){ return 'TS=' + g.expr; }).join(' AND ');
-  const rd = resolveDesign((pico && pico.design) || '');
-  if (rd && rd.wos) q += ' AND ' + rd.wos;
-  const py = wosDateClause(pico);
-  if (py) q += ' AND ' + py;
-  return q;
-}
-
-// Full numbered Web of Science strategy for the methods section / copy-and-paste:
-// one TS=(…) set per concept, the design set (DESIGN_FILTERS[..].wos — the same
-// Cochrane HSSS term family in WoS syntax), a PY= set for the date window, then
-// the #N AND-combination. Same sets as wosSingleLineQuery, presented set-by-set.
+// Full numbered Web of Science Core Collection strategy, paste-ready for Advanced
+// Search: one TS=(…) set per concept, the design set (DESIGN_FILTERS[..].wos — the
+// same Cochrane HSSS term family in WoS syntax), a PY= set for the date window,
+// then the #N AND-combination. Built from the SAME conceptGroupsWith grouping as
+// the PubMed strategy, so the two can never disagree about which concepts are
+// searched or how the arms combine. Pure → unit-tested.
 function wosStrategyText(blocks, pico) {
   const groups = conceptGroupsWith(blocks, pico, wosTermStr, true);
   if (!groups.length) return '';
@@ -7924,10 +7788,6 @@ function assembleProtocolQueries(blocks, pico) {
     // from the active design — recorded reproducibly via the protocol's pico.
     out[gid] = (gid === 'epmc' || gid === 'scopus') ? applyDesignClause(gid, base, design) : base;
   });
-  // Web of Science: recorded for the protocol/report and shown in its workbench
-  // panel, but never executed here — Clarivate's API rejects browser CORS, so the
-  // strategy is run in the WoS interface and the export imported as a pool slice.
-  out.wos = wosSingleLineQuery(blocks, pico);
   // Phrase proximity (off by default): apply each engine's native syntax to the
   // recorded query strings for the engines that support it. PubMed → [tiab:~N];
   // Europe PMC → Lucene "phrase"~N. Scopus/OpenAlex/CT.gov keep exact phrases
@@ -8054,7 +7914,7 @@ function retestProtocol() {
   if (!proj || !proj.searchProtocol) { showToast('Freeze a protocol first', '#f59e0b'); return; }
   const sp = proj.searchProtocol;
   const reassembled = assembleProtocolQueries(sp.blocks, sp.pico);
-  const strategyOk = ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex','wos'].every(function(k){
+  const strategyOk = ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex'].every(function(k){
     if (!sp.queries[k]) return true;
     const gp = (sp.groupProvenance && sp.groupProvenance[k]) || { method: 'deterministic' };
     if (gp.method && gp.method !== 'deterministic') return true; // AI/manual: frozen string replayed verbatim, not re-derived
@@ -8160,7 +8020,7 @@ function renderProtocolPanel() {
     html += '</div>';
   } else {
     html += '<div style="font-size:11px;color:var(--ev-text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Frozen query strings</div>';
-    ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex','wos'].forEach(function(gid){
+    ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex'].forEach(function(gid){
       if (!sp.queries[gid]) return;
       const gm = (sp.groupProvenance && sp.groupProvenance[gid] && sp.groupProvenance[gid].method) || 'deterministic';
       const badge = (gm === 'ai' || gm === 'ai-edited')
@@ -8255,7 +8115,7 @@ function screenPool() {
   // path must populate them too or the "Identified" line shows "undefined".
   function sumSliceCounts(ids){ return ids.reduce(function(s,id){ return s + ((poolSlices[id] && poolSlices[id].count) || 0); }, 0); }
   const poolPrimaryRaw   = sumSliceCounts(['pubmed','europepmc','cochrane']);
-  const poolSecondaryRaw = sumSliceCounts(['semantic','openalex','scopus','clinicaltrials','wos']);
+  const poolSecondaryRaw = sumSliceCounts(['semantic','openalex','scopus','clinicaltrials']);
   lastSearchProvenance = {
     primaryQuery: (poolSlices.pubmed && poolSlices.pubmed.query) || '',
     secondaryQuery: '',
@@ -9359,6 +9219,15 @@ function pressVerdictText(sections) {
 // blocks a search — PRESS is peer review, not validation.
 var pressLastReview = null;      // sections from the last run, for sign-off + export
 
+// Is there a strategy to peer-review yet? Requires concept blocks that actually
+// assemble into a PubMed query — the same condition that makes the query and the
+// numbered sets appear, so the review card arrives with the thing it reviews.
+function pressReviewable() {
+  if (typeof buildBlocks === 'undefined' || !buildBlocks.length) return false;
+  try { return !!assemblePubmedFromBlocks(buildBlocks, picoInputs(), false, false); }
+  catch (e) { return false; }
+}
+
 function pressRunOptions() {
   return {
     proximity: (typeof searchProximity !== 'undefined') ? searchProximity : 0,
@@ -9395,6 +9264,9 @@ function renderPressPanel() {
   const card = document.getElementById('press-card');
   const box = document.getElementById('press-body');
   if (!card || !box) return;
+  // PRESS reviews a PREPARED strategy, so the card stays hidden until one exists.
+  // Showing it beside an empty Build tab invites the reader to peer-review nothing.
+  if (!pressReviewable()) { card.style.display = 'none'; box.innerHTML = ''; return; }
   card.style.display = 'block';
   if (!pressLastReview) {
     box.innerHTML = '<div style="font-size:12px;color:var(--ev-text-muted);line-height:1.6">Peer review of the assembled PubMed strategy against the six PRESS 2015 elements. ' +
@@ -21080,7 +20952,6 @@ evOn('h179', function (event) { importResultRecords(this); }); // import Embase/
 // Hand-registered constant handlers (kept BELOW the auto marker so a registry
 // regeneration can't wipe them — these controls never had inline on*="" handlers).
 evOn('h180', function (event) { savePdfProxyOptIn(); });   // P5 — full-text PDF proxy consent toggle
-evOn('h188', function (event) { switchWbTab('wos'); });    // workbench Web of Science tab
 evOn('h189', function (event) { copyPaywalledStrategy('wos'); });   // Build tab — copy WoS strategy
 evOn('h190', function (event) { runPressReview(); });      // Build tab — PRESS peer review of the strategy
 
@@ -21132,7 +21003,7 @@ var EV_CALLABLE_DYNAMIC = [
   'updateChecklistItem', 'updateProjClItem', 'updateRobDomainJudgement', 'updateProjClDomain',
   'updateGradeDomain', 'updateGradeUpgrade', 'updateGradeField'
 ];
-var EV_CALLABLE_LITERALS = /*@@EV_CALLABLE_NAMES@@*/["acceptSuggestion","addAllForDb","addAllProjScannedRefs","addBuildTerm","addProjScannedRef","addToExistingProject","analyseProjScannedRef","analyseRefPaper","analyseSinglePaper","applyAllBuildSuggestions","applyBuildSuggestion","applyMeshSuggestion","changeChecklist","checkAlertForNew","copyWosWbStrategy","drawerRemoveCriterion","evClickSuppFile","evEnterAddBuildTerm","evEnterRunWbGroup","evOpenExternal","evRankedCbChanged","evSetCritKeywords","evSetCritKeywordsSync","evSetCritLabelPrev","evSetCritLabelSync","evSetCritType","evSetCritTypeOnly","evSetWbQuery","evSuppDrop","evSuppFile","exportUploaderCSV","fillBlockSynonymsFromMesh","findProjPaperPdf","homeRemoveCriterion","importWosPoolRecords","insertSetRef","loadCitedBy","loadRelated","openAddToProjModal","openProjDetail","prefillWb","projRefsToggle","reRunAgentWithSupp","removeBuildBlock","removeBuildTerm","removeCriterion","removeGradeOutcome","removePaperFromProject","removeProjExtractionField","removePubmedSet","removeSuppFile","renameBuildBlock","rerunSearch","resolveDupPair","retryRefResolve","runProjPaperAgent","runWbGroup","savePressSignoff","scanProjPaperRefs","setActiveReviewer","setBuildBlockRole","setProjChecklist","setProjClOverall","setProjPaperDecision","setProjPaperExclusionReason","setProjPaperReason","suggestSynonyms","toggleAlert","toggleBuildBlockSearch","toggleChecklist","toggleExpand","toggleProjPaperDetail","toggleSourceFilter","updateGradeField","updateNotes","updateProjExtraction","updateProjPaperNotes","updateProtocolField","updateRobDomainJudgement","updateUploaderDomainJudgement","updateUploaderItem"];   // build.js replaces [] with the scanned evAttr targets
+var EV_CALLABLE_LITERALS = /*@@EV_CALLABLE_NAMES@@*/["acceptSuggestion","addAllForDb","addAllProjScannedRefs","addBuildTerm","addProjScannedRef","addToExistingProject","analyseProjScannedRef","analyseRefPaper","analyseSinglePaper","applyAllBuildSuggestions","applyBuildSuggestion","applyMeshSuggestion","changeChecklist","checkAlertForNew","drawerRemoveCriterion","evClickSuppFile","evEnterAddBuildTerm","evEnterRunWbGroup","evOpenExternal","evRankedCbChanged","evSetCritKeywords","evSetCritKeywordsSync","evSetCritLabelPrev","evSetCritLabelSync","evSetCritType","evSetCritTypeOnly","evSetWbQuery","evSuppDrop","evSuppFile","exportUploaderCSV","fillBlockSynonymsFromMesh","findProjPaperPdf","homeRemoveCriterion","insertSetRef","loadCitedBy","loadRelated","openAddToProjModal","openProjDetail","prefillWb","projRefsToggle","reRunAgentWithSupp","removeBuildBlock","removeBuildTerm","removeCriterion","removeGradeOutcome","removePaperFromProject","removeProjExtractionField","removePubmedSet","removeSuppFile","renameBuildBlock","rerunSearch","resolveDupPair","retryRefResolve","runProjPaperAgent","runWbGroup","savePressSignoff","scanProjPaperRefs","setActiveReviewer","setBuildBlockRole","setProjChecklist","setProjClOverall","setProjPaperDecision","setProjPaperExclusionReason","setProjPaperReason","suggestSynonyms","toggleAlert","toggleBuildBlockSearch","toggleChecklist","toggleExpand","toggleProjPaperDetail","toggleSourceFilter","updateGradeField","updateNotes","updateProjExtraction","updateProjPaperNotes","updateProtocolField","updateRobDomainJudgement","updateUploaderDomainJudgement","updateUploaderItem"];   // build.js replaces [] with the scanned evAttr targets
 EV_CALLABLE_LITERALS.concat(EV_CALLABLE_DYNAMIC).forEach(function (name) {
   const f = (typeof window !== 'undefined') ? window[name] : undefined;
   if (typeof f === 'function') EV_CALLABLE[name] = f;
