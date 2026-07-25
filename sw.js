@@ -12,7 +12,7 @@
 // v7 (MV3): the allowlist is now EXACT shell paths resolved from the registration
 // scope (not suffix regexes), so a deeper same-origin path like <scope>private/ is
 // no longer cacheable. Each bump evicts the older cache on activation.
-const CACHE = 'evidentum-v7';
+const CACHE = 'evidentum-v8';
 const ASSETS = [
   './',
   './index.html',

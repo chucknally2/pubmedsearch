@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-R09t73c4tcnfNse53LbIe+Ts6XAEw9wySPVrUJZdjWE='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-chxbi/zAF2GUsg3rjFxOZzt76neP6ucG1EPxl8gq+iE='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -1194,8 +1194,8 @@ button:not(:disabled):active { filter: brightness(0.95); }
         <div id="build-numbered" style="font-size:11px;color:var(--ev-text-2);font-family:'IBM Plex Mono',monospace;background:var(--ev-surface);border:1px solid var(--ev-border-soft);border-radius:6px;padding:11px 13px;line-height:1.5"></div>
       </details>
       <details style="margin-top:9px">
-        <summary style="cursor:pointer;font-size:11px;color:var(--ev-link-2);user-select:none">Paywalled databases &mdash; copy &amp; paste <span style="color:var(--ev-text-dim)">(Ovid Embase &middot; Cochrane CENTRAL)</span></summary>
-        <div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin:7px 0">These interfaces have no public search API, so paste the translated strategy into their own search page and run it there; record the retrieved counts in your PRISMA flow alongside the databases searched here. &#9888;&#65039; <b>Ovid:</b> subject headings are translated mechanically from MeSH &mdash; <b>verify each <span style="font-family:'IBM Plex Mono',monospace">exp &hellip;/</span> line against Emtree</b> (Embase&rsquo;s own thesaurus) and remap where the vocabularies differ. <b>CENTRAL</b> indexes MeSH natively so headings carry over as-is; no RCT filter line is added because CENTRAL is already a register of controlled trials.</div>
+        <summary style="cursor:pointer;font-size:11px;color:var(--ev-link-2);user-select:none">Paywalled databases &mdash; copy &amp; paste <span style="color:var(--ev-text-dim)">(Ovid Embase &middot; Cochrane CENTRAL &middot; Web of Science)</span></summary>
+        <div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin:7px 0">These interfaces have no public search API, so paste the translated strategy into their own search page and run it there; record the retrieved counts in your PRISMA flow alongside the databases searched here. &#9888;&#65039; <b>Ovid:</b> subject headings are translated mechanically from MeSH &mdash; <b>verify each <span style="font-family:'IBM Plex Mono',monospace">exp &hellip;/</span> line against Emtree</b> (Embase&rsquo;s own thesaurus) and remap where the vocabularies differ. <b>CENTRAL</b> indexes MeSH natively so headings carry over as-is; no RCT filter line is added because CENTRAL is already a register of controlled trials. <b>Web of Science</b> indexes no subject vocabulary at all, so every heading becomes a free-text topic phrase &mdash; check the word variants. The Web of Science tab in the workbench can import your exported records straight into the pool.</div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin:6px 0 2px">
           <span style="font-size:11px;color:var(--ev-text-body);font-weight:600">Ovid &middot; Embase <span style="font-size:10px;color:var(--ev-text-dim);font-weight:400">(Advanced Search)</span></span>
           <button data-evclick="h48" style="font-size:11px;padding:5px 11px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer">&#128203; Copy Ovid</button>
@@ -1206,6 +1206,11 @@ button:not(:disabled):active { filter: brightness(0.95); }
           <button data-evclick="h49" style="font-size:11px;padding:5px 11px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer">&#128203; Copy CENTRAL</button>
         </div>
         <div id="build-central" style="font-size:11px;color:var(--ev-text-2);font-family:'IBM Plex Mono',monospace;background:var(--ev-surface);border:1px solid var(--ev-border-soft);border-radius:6px;padding:11px 13px;line-height:1.6;white-space:pre-wrap;word-break:break-word"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:10px 0 2px">
+          <span style="font-size:11px;color:var(--ev-text-body);font-weight:600">Web of Science &middot; Core Collection <span style="font-size:10px;color:var(--ev-text-dim);font-weight:400">(Advanced Search)</span></span>
+          <button data-evclick="h189" style="font-size:11px;padding:5px 11px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer">&#128203; Copy Web of Science</button>
+        </div>
+        <div id="build-wos" style="font-size:11px;color:var(--ev-text-2);font-family:'IBM Plex Mono',monospace;background:var(--ev-surface);border:1px solid var(--ev-border-soft);border-radius:6px;padding:11px 13px;line-height:1.6;white-space:pre-wrap;word-break:break-word"></div>
       </details>
       <div style="font-size:11px;color:var(--ev-text-dim);margin-top:9px;line-height:1.5">&#8505;&#65039; This PubMed strategy is translated to each database&rsquo;s native syntax when you send it to the workbench. <b>MeSH headings only search as MeSH in PubMed</b> (and, partially, Europe PMC) &mdash; Scopus, Semantic Scholar, OpenAlex and ClinicalTrials.gov search them as free-text keywords, so every concept needs free-text synonyms to travel. Inverted headings (e.g. &ldquo;Diabetes Mellitus, Type&nbsp;2&rdquo;) are auto-rewritten to natural word order for those engines.</div>
       <div style="display:flex;align-items:center;gap:14px;margin-top:11px;flex-wrap:wrap">
@@ -1226,6 +1231,17 @@ button:not(:disabled):active { filter: brightness(0.95); }
         <div id="build-seed-results" style="margin-top:9px;font-size:12px"></div>
       </div>
     </div>
+
+    <!-- PRESS peer review of the assembled PubMed strategy -->
+    <div id="press-card" class="card" style="display:none">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap">
+        <span class="step-num">4</span>
+        <div class="card-label" style="margin-bottom:0">Peer review the search &mdash; PRESS 2015</div>
+        <button data-evclick="h190" id="press-run-btn" title="Run the six PRESS 2015 checks against this strategy" style="margin-left:auto;font-size:12px;padding:8px 14px;border-radius:6px;border:1px solid #a78bfa55;background:#2e1f4f33;color:var(--ev-ai-text);cursor:pointer;font-weight:650">&#128269; Run PRESS review</button>
+      </div>
+      <div id="press-body"></div>
+    </div>
+
     <div id="protocol-card" class="card" style="display:none"></div>
   </div>
 
@@ -1374,6 +1390,7 @@ button:not(:disabled):active { filter: brightness(0.95); }
           <button class="wb-tab"        data-wbtab="keyword" data-evclick="h70">&#129504; Semantic Scholar</button>
           <button class="wb-tab"        data-wbtab="clinicaltrials" data-evclick="h71">&#129514; ClinicalTrials.gov</button>
           <button class="wb-tab"        data-wbtab="openalex" data-evclick="h72">&#127760; OpenAlex</button>
+          <button class="wb-tab"        data-wbtab="wos"      data-evclick="h188" title="Web of Science Core Collection — translated strategy, run in the WoS interface, results imported into the pool">&#128376;&#65039; Web of Science</button>
         </div>
 
         <!-- PubMed panel (includes set-history builder) -->
@@ -1407,6 +1424,7 @@ button:not(:disabled):active { filter: brightness(0.95); }
         <div class="wb-panel" id="wbpanel-keyword"><div id="wb-input-keyword"></div></div>
         <div class="wb-panel" id="wbpanel-clinicaltrials"><div id="wb-input-clinicaltrials"></div></div>
         <div class="wb-panel" id="wbpanel-openalex"><div id="wb-input-openalex"></div></div>
+        <div class="wb-panel" id="wbpanel-wos"><div id="wb-input-wos"></div></div>
 
         <!-- Pool box — its own prominent box below the query panels: the assembled,
              de-duplicated set you've built. "See results" screens it. -->
@@ -1801,6 +1819,22 @@ button:not(:disabled):active { filter: brightness(0.95); }
                 <div class="ucl-cl-name">Jadad Scale</div>
                 <div class="ucl-cl-desc">5-point scale assessing randomisation, blinding, and withdrawals/dropouts in clinical trials.</div>
                 <div class="ucl-cl-tag">RCT</div>
+              </div>
+            </label>
+            <label class="ucl-cl-card">
+              <input type="checkbox" value="AMSTAR2" data-evchange="h106">
+              <div class="ucl-cl-card-inner">
+                <div class="ucl-cl-name">AMSTAR 2</div>
+                <div class="ucl-cl-desc">16-item critical appraisal of how a systematic review was <i>conducted</i> (PRISMA covers how it was reported). Seven critical domains drive an overall High / Moderate / Low / Critically&nbsp;low confidence rating rather than a percentage.</div>
+                <div class="ucl-cl-tag">Systematic Review / Meta-Analysis</div>
+              </div>
+            </label>
+            <label class="ucl-cl-card">
+              <input type="checkbox" value="QUADAS2" data-evchange="h106">
+              <div class="ucl-cl-card-inner">
+                <div class="ucl-cl-name">QUADAS-2</div>
+                <div class="ucl-cl-desc">Four risk-of-bias domains with signalling questions, plus three applicability judgements, for studies of diagnostic test accuracy.</div>
+                <div class="ucl-cl-tag">Diagnostic test accuracy</div>
               </div>
             </label>
           </div></div>
@@ -3394,6 +3428,17 @@ function getRob2RiskLabel(p) {
 // meta-analysis was performed). Items still 'unclear' make the rating provisional —
 // resolving them can only hold or worsen it, never improve it, so the provisional
 // rating is safe to show with an unrated-count marker rather than hidden.
+// AMSTAR 2 is rated by critical-domain flaws, not by item percentage — say so
+// wherever its items are answered, or a coverage badge invites the wrong reading.
+// Shared by the results tab, the project card and the PDF uploader so the three
+// can't drift apart.
+function amstarPreambleHtml(clKey) {
+  if (clKey !== 'AMSTAR2') return '';
+  return '<div style="font-size:11px;color:var(--ev-text-muted);line-height:1.5;padding:7px 10px;margin-bottom:7px;background:var(--ev-surface);border:1px solid var(--ev-border);border-radius:6px">' +
+    '&#9873; Items 2, 4, 7, 9, 11, 13 and 15 are <b style="color:var(--ev-link)">critical domains</b>: one &ldquo;No&rdquo; caps overall confidence at <b>Low</b>, two or more at <b>Critically low</b> (Shea 2017). ' +
+    '&ldquo;Partial&rdquo; counts as an accepted response, not a flaw. Mark items 11, 12 and 15 N/A when no meta-analysis was performed.</div>';
+}
+
 function amstarConfidenceRating(p) {
   const cl = CHECKLISTS.AMSTAR2;
   if (!cl || !p || !p.checklists || !p.checklists.AMSTAR2) return null;
@@ -3717,13 +3762,7 @@ function buildChecklistBody(p, ctx) {
   // its items (e.g. CONSORT 2025: Title/abstract · Open science · Methods · …).
   const sectionAt = {};
   (cl.sections || []).forEach(function(s){ sectionAt[s.at] = s.title; });
-  // AMSTAR 2 is rated by critical-domain flaws, not by item percentage — say so
-  // where the items are being answered, or the % badge invites the wrong reading.
-  const preamble = clKey === 'AMSTAR2'
-    ? '<div style="font-size:11px;color:var(--ev-text-muted);line-height:1.5;padding:7px 10px;margin-bottom:7px;background:var(--ev-surface);border:1px solid var(--ev-border);border-radius:6px">' +
-      '&#9873; Items 2, 4, 7, 9, 11, 13 and 15 are <b style="color:var(--ev-link)">critical domains</b>: one &ldquo;No&rdquo; caps overall confidence at <b>Low</b>, two or more at <b>Critically low</b> (Shea 2017). ' +
-      '&ldquo;Partial&rdquo; counts as an accepted response, not a flaw. Mark items 11, 12 and 15 N/A when no meta-analysis was performed.</div>'
-    : '';
+  const preamble = amstarPreambleHtml(clKey);
   return preamble + cl.items.map(function(item) {
     const header = sectionAt[item.id]
       ? '<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ev-link);margin:12px 0 5px;padding-bottom:3px;border-bottom:1px solid var(--ev-border)">' + esc(sectionAt[item.id]) + '</div>'
@@ -5913,6 +5952,8 @@ async function buildDraftStrategy() {
     renderBuildCoach();
     document.getElementById('build-blocks-card').style.display = 'block';
     document.getElementById('build-count-card').style.display = 'block';
+    const pressCard = document.getElementById('press-card');
+    if (pressCard) pressCard.style.display = 'block';
     assembleBuildQuery();
     // The model's MeSH headings are only a CLAIM until verified \u2014 an LLM can emit a
     // plausible heading that isn't in the thesaurus, which silently retrieves nothing.
@@ -6470,25 +6511,32 @@ var DESIGN_FILTERS = {
     // filter (randomization/, crossover procedure/, double blind procedure/,
     // single blind procedure/): Embase indexes trial methodology under these
     // headings, so free text alone under-retrieves there. trial.ti. mirrors trial[ti].
-    ovid:     '(randomized controlled trial/ OR controlled clinical trial/ OR randomization/ OR crossover procedure/ OR double blind procedure/ OR single blind procedure/ OR randomized.ti,ab. OR randomised.ti,ab. OR placebo.ti,ab. OR randomly.ti,ab. OR trial.ti.)' },
+    ovid:     '(randomized controlled trial/ OR controlled clinical trial/ OR randomization/ OR crossover procedure/ OR double blind procedure/ OR single blind procedure/ OR randomized.ti,ab. OR randomised.ti,ab. OR placebo.ti,ab. OR randomly.ti,ab. OR trial.ti.)',
+    // Web of Science Core Collection has no controlled trial vocabulary, so the
+    // WoS line is the same Cochrane HSSS free-text family as scopusHedge, in WoS
+    // advanced syntax (TS= topic, TI= title — mirrors trial[ti]).
+    wos:      '(TS=(randomized OR randomised OR randomly OR placebo OR "controlled clinical trial") OR TI=(trial))' },
   sr:  { label: 'Systematic review / meta-analysis', review: true,
     pubmed:   '(systematic review[pt] OR meta-analysis[pt] OR systematic review[tiab] OR meta-analysis[tiab])',
     epmc:     '(PUB_TYPE:"systematic-review" OR PUB_TYPE:"Meta-Analysis")',
     scopus:   'DOCTYPE(re)',
     openalex: 'type:review',
     s2:       'Review',
-    ovid:     '(systematic review/ OR meta analysis/ OR systematic review.ti,ab. OR meta analysis.ti,ab.)' },
+    ovid:     '(systematic review/ OR meta analysis/ OR systematic review.ti,ab. OR meta analysis.ti,ab.)',
+    wos:      '(TS=("systematic review" OR "meta-analysis" OR "meta analysis") OR DT=(Review))' },
   obs: { label: 'Observational', review: false,
     pubmed:   '(cohort studies[Mesh] OR case-control studies[Mesh] OR observational study[pt])',
     epmc:     'PUB_TYPE:"Observational Study"',
     scopus:   'NOT DOCTYPE(re)',
     openalex: 'type:!review',
     s2:       null,
-    ovid:     '(cohort analysis/ OR case control study/ OR observational study/)' },
+    ovid:     '(cohort analysis/ OR case control study/ OR observational study/)',
+    wos:      'TS=("cohort study" OR "cohort studies" OR "cohort analysis" OR "case-control" OR "case control" OR "observational study")' },
   dx:  { label: 'Diagnostic accuracy', review: false,
     pubmed:   '(sensitivity and specificity[Mesh] OR diagnostic accuracy[tiab])',
     epmc:     null, scopus: null, openalex: null, s2: null,
-    ovid:     '("sensitivity and specificity"/ OR diagnostic accuracy.ti,ab.)' }
+    ovid:     '("sensitivity and specificity"/ OR diagnostic accuracy.ti,ab.)',
+    wos:      'TS=("sensitivity and specificity" OR "diagnostic accuracy")' }
 };
 
 // The design in force for the current search/replay. Set from the authoritative
@@ -6549,6 +6597,7 @@ function resolveDesign(spec) {
     pubmed:   orClause('pubmed'),
     epmc:     orClause('epmc'),
     ovid:     orClause('ovid'),
+    wos:      orClause('wos'),
     scopus:   agreeClause('scopus'),
     openalex: agreeClause('openalex'),
     s2:       agreeClause('s2'),
@@ -6610,6 +6659,15 @@ function assembleBuildQuery() {
   if (el) el.textContent = q || '(add terms to assemble a query)';
   renderNumberedStrategy();
   renderPaywalledStrategies();
+  // The PRESS panel reviews the strategy as it stands, so a stale review is worse
+  // than none: editing the blocks re-runs it when one has already been run, and
+  // otherwise just surfaces the (unrun) invitation card.
+  if (typeof renderPressPanel === 'function') {
+    if (typeof pressLastReview !== 'undefined' && pressLastReview && buildBlocks.length) {
+      pressLastReview = pressReview(buildBlocks, picoInputs(), pressRunOptions());
+    }
+    renderPressPanel();
+  }
   // counts are stale once the query changes
   document.getElementById('build-count-result').innerHTML = '';
   document.getElementById('build-send-btn').style.display = 'none';
@@ -6649,19 +6707,23 @@ function copyNumberedStrategy() {
 // strategy — these databases are paywalled (no public search API), so the
 // strategy is exported for their own search pages instead of searched here.
 function renderPaywalledStrategies() {
-  const o = document.getElementById('build-ovid'), c = document.getElementById('build-central');
+  const o = document.getElementById('build-ovid'), c = document.getElementById('build-central'), w = document.getElementById('build-wos');
   if (!o || !c) return;
   const pico = picoInputs();
   o.textContent = ovidStrategyText(buildBlocks, pico)    || '(add terms to assemble a strategy)';
   c.textContent = centralStrategyText(buildBlocks, pico) || '(add terms to assemble a strategy)';
+  if (w) w.textContent = wosStrategyText(buildBlocks, pico) || '(add terms to assemble a strategy)';
 }
 
 function copyPaywalledStrategy(which) {
   const pico = picoInputs();
-  const txt = which === 'ovid' ? ovidStrategyText(buildBlocks, pico) : centralStrategyText(buildBlocks, pico);
+  const txt = which === 'ovid' ? ovidStrategyText(buildBlocks, pico)
+            : which === 'wos'  ? wosStrategyText(buildBlocks, pico)
+            : centralStrategyText(buildBlocks, pico);
+  const label = which === 'ovid' ? 'Ovid Embase' : which === 'wos' ? 'Web of Science' : 'CENTRAL';
   if (!txt) { showToast('Nothing to copy yet', '#f59e0b'); return; }
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(txt).then(function(){ showToast((which === 'ovid' ? 'Ovid Embase' : 'CENTRAL') + ' strategy copied', '#22c55e'); },
+    navigator.clipboard.writeText(txt).then(function(){ showToast(label + ' strategy copied', '#22c55e'); },
       function(){ showToast('Copy failed', '#ef4444'); });
   }
 }
@@ -6938,6 +7000,20 @@ function sendStrategyToWorkbench() {
   const pubmedQ = buildPubmedQuery();
   if (!pubmedQ) { showToast('Nothing to send', '#f59e0b'); return; }
 
+  // PRESS 2015 places peer review of the MEDLINE strategy BEFORE translation to the
+  // other databases — which is this exact moment. Run the checks silently and warn
+  // if any element would be returned for revision; never block the send.
+  if (typeof pressReview === 'function') {
+    const sections = pressReview(buildBlocks, picoInputs(), pressRunOptions());
+    pressLastReview = sections;
+    if (typeof renderPressPanel === 'function') renderPressPanel();
+    const counts = pressSummary(sections);
+    if (counts.fail) {
+      showToast('⚠ PRESS peer review: ' + counts.fail + ' item' + (counts.fail === 1 ? '' : 's') +
+        ' need revision — see step 4 on the Build tab. Sent anyway.', '#f59e0b');
+    }
+  }
+
   // Non-blocking heads-up: broad single-word free-text terms balloon the result set
   // and pull in off-topic papers (especially on full-text engines). Warn, but still send.
   const broad = flaggedBroadBuildTerms();
@@ -7025,7 +7101,8 @@ var WB_META = {
   scopus:         { label: 'Scopus',             icon: '\ud83d\udc53' },
   semantic:       { label: 'Semantic Scholar',   icon: '\ud83e\udde0' },
   openalex:       { label: 'OpenAlex',           icon: '\ud83c\udf10' },
-  clinicaltrials: { label: 'ClinicalTrials.gov', icon: '\ud83e\uddea' }
+  clinicaltrials: { label: 'ClinicalTrials.gov', icon: '\ud83e\uddea' },
+  wos:            { label: 'Web of Science',     icon: '\ud83d\udd78\ufe0f' }
 };
 
 // Groups share one query bar per syntax family. Members keep individual pool
@@ -7207,6 +7284,130 @@ function renderWbPanels() {
       '<div id="wbnote-' + gid + '" style="margin-top:6px;font-size:10px;line-height:1.6"></div>';
   });
   Object.keys(WB_GROUPS).forEach(function(gid){ if (typeof evRenderWbNote === 'function') evRenderWbNote(gid); });
+  renderWosPanel();
+}
+
+// ── Web of Science (no API — export/import) ──────────────────────────────────
+// Clarivate's WoS APIs reject browser CORS preflights (verified live: no
+// Access-Control-Allow-Origin on OPTIONS or GET), so WoS cannot be searched from
+// the page the way the other databases are. Its workbench panel instead shows the
+// strategy TRANSLATED to WoS Core Collection advanced syntax, opens the WoS
+// advanced search to run it, and imports the exported records as a first-class
+// pool slice — dedup, PRISMA per-database provenance and the search report treat
+// it exactly like an API database.
+
+// The WoS query in force right now: derived live from the concept blocks (the
+// single source of truth) when a Build strategy exists; else whatever a protocol
+// fill placed in wbQueries.wos; else a TS=() wrap of the PubMed bar's keyword
+// derivation as a last resort for bar-only sessions.
+function wosCurrentStrategy() {
+  if (typeof buildBlocks !== 'undefined' && buildBlocks.length) return wosSingleLineQuery(buildBlocks, picoInputs());
+  if ((wbQueries.wos || '').trim()) return wbQueries.wos.trim();
+  const pubmedQ = ((document.getElementById('wbq-pubmed') || {}).value || '').trim() || (wbQueries.pubmed || '').trim();
+  if (!pubmedQ) return '';
+  const base = deriveSecondaryQuery(pubmedQ) || pubmedQ;
+  return base ? 'TS=(' + base + ')' : '';
+}
+
+function copyWosWbStrategy() {
+  const q = wosCurrentStrategy();
+  if (!q) { showToast('Build a strategy first — the WoS translation derives from it', '#f59e0b'); return; }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(q).then(function(){ showToast('Web of Science strategy copied', '#22c55e'); },
+      function(){ showToast('Copy failed', '#ef4444'); });
+  }
+}
+
+function renderWosPanel() {
+  const host = document.getElementById('wb-input-wos');
+  if (!host) return;
+  const slice = poolSlices.wos;
+  const status = slice
+    ? '<span style="font-size:10px;color:var(--ev-ok-text)" title="imported records in the pool">✓ ' + slice.count + '</span>'
+    : '<span style="font-size:10px;color:var(--ev-text-dim)">—</span>';
+  const q = wosCurrentStrategy();
+  host.innerHTML =
+    '<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">' +
+      '<span style="font-size:12px;font-weight:600;color:var(--ev-text-body)">🕸️ Web of Science</span>' +
+      '<span style="font-size:10px;color:var(--ev-ai-text);border:1px solid #a78bfa44;border-radius:4px;padding:1px 6px">WoS Core Collection advanced</span>' +
+      '<span style="margin-left:auto;display:inline-flex;gap:6px;flex-wrap:wrap">' +
+        '<label style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--ev-text-2);border:1px solid var(--ev-border);border-radius:6px;padding:4px 9px;cursor:default">🕸️ Web of Science ' + status + '</label>' +
+      '</span>' +
+    '</div>' +
+    '<div style="font-size:11px;color:var(--ev-text-dim);margin-bottom:7px;line-height:1.5">Web of Science has no browser-reachable search API, so it runs in its own interface: ' +
+      '<b>1)</b> copy the translated strategy below, <b>2)</b> run it in WoS Advanced Search (Core Collection), <b>3)</b> export the records (RIS, or tab-delimited/CSV) and import them here — they join the pool as the Web of Science slice with full dedup and PRISMA provenance. ' +
+      '⚠️ Subject headings are translated to free-text topic phrases (WoS has no MeSH) — exact phrases are searched, so review the strategy for missing word variants.</div>' +
+    '<div id="wbq-wos-view" style="font-size:12px;color:var(--ev-text-2);font-family:\'IBM Plex Mono\',monospace;background:var(--ev-surface);border:1px solid var(--ev-border-soft);border-radius:6px;padding:10px 13px;line-height:1.6;word-break:break-word;margin-bottom:8px">' +
+      (q ? esc(q) : '<span style="color:var(--ev-text-dim)">(build a strategy in the Build tab — the WoS translation derives from your concept blocks)</span>') + '</div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+      '<button ' + evAttr('click', 'copyWosWbStrategy') + ' style="font-size:12px;padding:9px 14px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer;white-space:nowrap">📋 Copy strategy</button>' +
+      '<button ' + evAttr('click', 'evOpenExternal', ['https://www.webofscience.com/wos/woscc/advanced-search']) + ' style="font-size:12px;padding:9px 14px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer;white-space:nowrap">↗ Open Web of Science</button>' +
+      '<label style="font-size:12px;padding:9px 16px;border-radius:6px;border:none;background:#2563eb;color:#fff;cursor:pointer;font-weight:600;white-space:nowrap">⬇ Import results → add to pool' +
+        '<input type="file" accept=".ris,.nbib,.txt,.csv" multiple ' + evAttr('change', 'importWosPoolRecords', [], ['self']) + ' style="display:none"></label>' +
+    '</div>' +
+    '<div id="wbstatus-wos" style="margin-top:8px;font-size:11px;min-height:6px"></div>';
+}
+
+// File-input handler for the WoS panel: parse the export (RIS or CSV — same
+// bounded parsers as the Results-tab import), then land it as the wos pool slice
+// with replace semantics, recording the strategy in force as the slice query.
+function importWosPoolRecords(input) {
+  let files = input && input.files ? Array.prototype.slice.call(input.files) : [];
+  if (!files.length) return;
+  if (files.length > EV_LIMITS.maxFilesPerOp) {
+    logIssue('search', 'Too many files selected (' + files.length + '; limit ' + EV_LIMITS.maxFilesPerOp + ')',
+             'Only the first ' + EV_LIMITS.maxFilesPerOp + ' were read. Split the import into smaller batches.');
+    files = files.slice(0, EV_LIMITS.maxFilesPerOp);
+  }
+  files = files.filter(function(file) {
+    const err = evFileSizeError(file, EV_LIMITS.textImportMaxBytes, file.name);
+    if (err) { logIssue('search', err, 'RIS/CSV exports are text — this is far larger than any real record set.'); }
+    return !err;
+  });
+  if (!files.length) { input.value = ''; return; }
+  const statusEl = document.getElementById('wbstatus-wos');
+  if (statusEl) statusEl.innerHTML = '<span class="spinner"></span> reading Web of Science export…';
+  let pending = files.length, collected = [], seq = 0;
+  files.forEach(function(file) {
+    const reader = new FileReader();
+    reader.onload = function() {
+      try {
+        const textData = String(reader.result || '');
+        const head = textData.slice(0, 2000);
+        const isRis = /\.(ris|nbib)$/i.test(file.name) ||
+                    (!/\.csv$/i.test(file.name) && /(^|\n)\s*TY\s{0,3}-\s/.test(head));
+        const recs = isRis ? parseRisRecords(textData) : parseTabularRecords(textData);
+        recs.forEach(function(rec){ collected.push(makeImportedPaper(rec, 'Web of Science', seq++)); });
+      } catch (e) {
+        logIssue('search', 'Could not parse ' + file.name + ' — ' + (e && e.message || 'unreadable'),
+                 'Export the records again from Web of Science as RIS or CSV and retry.');
+      }
+      if (--pending === 0) finishWosPoolImport(collected);
+    };
+    reader.onerror = function() { if (--pending === 0) finishWosPoolImport(collected); };
+    reader.readAsText(file);
+  });
+  input.value = '';
+}
+
+function finishWosPoolImport(records) {
+  if (!records.length) {
+    const st = document.getElementById('wbstatus-wos');
+    if (st) st.innerHTML = '<span style="color:#ef4444">✕ no records found — check the file is a Web of Science RIS or CSV export</span>';
+    showToast('No records found in the Web of Science export', '#f59e0b');
+    return;
+  }
+  records.forEach(function(p, i){ p._retrievalRank = i; });
+  const replacing = !!poolSlices.wos;
+  const q = wosCurrentStrategy() || '(strategy run externally in Web of Science)';
+  poolSlices.wos = { query: q, results: records, count: records.length, total: null, time: new Date().toLocaleString() };
+  logWbSearch('wos', q, records.length, replacing);
+  recomputePool();
+  renderWbPanels();                                 // re-renders the panel (badge + status host)
+  switchWbTab('wos');
+  const st = document.getElementById('wbstatus-wos');
+  if (st) st.innerHTML = '<span style="color:var(--ev-ok-text)">✓ Web of Science: ' + records.length + ' record' + (records.length === 1 ? '' : 's') + ' imported' + (replacing ? ' (replaced)' : '') + '</span>';
+  showToast('Web of Science: ' + records.length + ' record' + (records.length === 1 ? '' : 's') + ' added to the pool' + (replacing ? ' (slice replaced)' : ''), '#22c55e');
 }
 
 // Prefill a group's query from the PubMed strategy, translated to its syntax.
@@ -7333,7 +7534,11 @@ function addAllForDb(id) {
 function recomputePool() {
   const order = ['pubmed','cochrane','europepmc','semantic','openalex','scopus','clinicaltrials'];
   const arrays = order.map(function(id){ return (poolSlices[id] && poolSlices[id].results) || []; });
-  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0);
+  // Web of Science records are imported exports, so they ride the dedup's
+  // imported-records position: merged LAST, adding their source label to any
+  // record an API database already found.
+  const wosArr = (poolSlices.wos && poolSlices.wos.results) || [];
+  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0) + wosArr.length;
   poolMerged = deduplicatePapers(
     arrays[order.indexOf('pubmed')],
     arrays[order.indexOf('cochrane')],
@@ -7341,7 +7546,8 @@ function recomputePool() {
     arrays[order.indexOf('semantic')],
     arrays[order.indexOf('openalex')],
     arrays[order.indexOf('scopus')],
-    arrays[order.indexOf('clinicaltrials')]
+    arrays[order.indexOf('clinicaltrials')],
+    wosArr
   );
   const dupes = rawTotal - poolMerged.length;
   const searchCount = Object.keys(poolSlices).length;
@@ -7459,7 +7665,7 @@ function logWbSearch(id, query, count, replacing) {
 
 var PROTOCOL_FORMAT = 'evidentum-search-protocol/v1';
 var PROTOCOL_GROUPS = { pubmed:['pubmed'], epmc:['europepmc','cochrane'], scopus:['scopus'], keyword:['semantic'], clinicaltrials:['clinicaltrials'], openalex:['openalex'] };
-var PROTOCOL_GROUP_LABEL = { pubmed:'PubMed', epmc:'Europe PMC + Cochrane', scopus:'Scopus', keyword:'Semantic Scholar', clinicaltrials:'ClinicalTrials.gov', openalex:'OpenAlex' };
+var PROTOCOL_GROUP_LABEL = { pubmed:'PubMed', epmc:'Europe PMC + Cochrane', scopus:'Scopus', keyword:'Semantic Scholar', clinicaltrials:'ClinicalTrials.gov', openalex:'OpenAlex', wos:'Web of Science (run externally)' };
 var PROTO_BTN = 'font-size:12px;padding:8px 13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-2);cursor:pointer';
 
 // Pure: assemble the PubMed string from a stored skeleton. Mirrors buildPubmedQuery()
@@ -7502,7 +7708,13 @@ function pubmedTermStr(t) {
 // Generalised over the per-term renderer so the Ovid/CENTRAL exports below share
 // the EXACT grouping/merge logic — the translations can never disagree with the
 // PubMed strategy about which concepts are searched or how the arms combine.
-function conceptGroupsWith(blocks, pico, termStr) {
+// dedupeCI: collapse rendered parts that differ only by case WITHIN a concept.
+// Off by default — the PubMed/Ovid/CENTRAL renderings are byte-frozen into saved
+// protocols and must not shift under existing users. Web of Science opts in,
+// because its MeSH-to-topic-phrase translation routinely renders a heading and
+// its free-text twin identically ("Dexmedetomidine" / "dexmedetomidine"), and
+// "X OR X" in a reported strategy reads as an error.
+function conceptGroupsWith(blocks, pico, termStr, dedupeCI) {
   const opts = pico || {};
   const combineIC = opts.comparatorLogic !== 'and';   // default: OR the two arms
   const includeOutcome = !!opts.searchOutcome;          // default: outcome NOT searched
@@ -7510,12 +7722,21 @@ function conceptGroupsWith(blocks, pico, termStr) {
   searchableBlocks(blocks).forEach(function(b) {
     const role = b.role || 'other';
     if (role === 'outcome' && !includeOutcome) return;
-    const parts = (b.terms || []).map(termStr).filter(Boolean);
+    let parts = (b.terms || []).map(termStr).filter(Boolean);
+    if (dedupeCI) {
+      const seen = {};
+      parts = parts.filter(function(x){ const k = x.toLowerCase(); if (seen[k]) return false; seen[k] = 1; return true; });
+    }
     if (!parts.length) return;
     if (combineIC && (role === 'intervention' || role === 'comparator')) {
       if (icIdx === -1) { icIdx = groups.length; groups.push(null); }   // reserve position
       if (role === 'comparator') icHasComp = true;
-      parts.forEach(function(p){ if (icParts.indexOf(p) === -1) icParts.push(p); });   // dedupe across arms
+      parts.forEach(function(p){                                                      // dedupe across arms
+        const dup = dedupeCI
+          ? icParts.some(function(x){ return x.toLowerCase() === p.toLowerCase(); })
+          : icParts.indexOf(p) !== -1;
+        if (!dup) icParts.push(p);
+      });
       return;
     }
     groups.push({ role: role, label: (b.concept || PICO_ROLE_LABEL[role] || 'Concept'), expr: '(' + parts.join(' OR ') + ')' });
@@ -7628,6 +7849,61 @@ function centralStrategyText(blocks, pico) {
   return lines.join('\n');
 }
 
+// One term → Web of Science Core Collection free text. WoS has NO controlled
+// vocabulary the app can target (MeSH is not indexed; Keywords Plus is auto-
+// generated), so subject headings are translated to topic phrases: the heading
+// text, de-inverted to natural word order ("Diabetes Mellitus, Type 2" → "Type 2
+// Diabetes Mellitus"), searched as free text in TS=. PubMed *-truncation is valid
+// WoS truncation unchanged; multi-word free text is quoted (exact phrase) unless
+// truncated, mirroring centralTermStr.
+function wosTermStr(t) {
+  let term = (t.term || '').trim();
+  if (t.field === 'mesh' || t.field === 'pt') term = deinvertMeshHeading(term.replace(/\*$/, ''));
+  if (/\s/.test(term) && term.indexOf('*') === -1) term = '"' + term + '"';
+  return term;
+}
+
+// WoS publication-year clause for the advanced search (PY=). WoS coverage starts
+// 1900; an open end uses the current year, mirroring centralStrategyText.
+function wosDateClause(pico) {
+  const yf = cleanYear(pico && pico.dateFrom), yt = cleanYear(pico && pico.dateTo);
+  if (!yf && !yt) return '';
+  return 'PY=(' + (yf || '1900') + '-' + (yt || new Date().getFullYear()) + ')';
+}
+
+// Single-line Web of Science Core Collection advanced query — the executable
+// artifact for the workbench bar / pool slice: each concept group is one TS=(…)
+// clause, AND-combined, then the design clause and PY= window. Derived from the
+// SAME conceptGroupsWith grouping as every other engine, so it can never disagree
+// with the PubMed strategy about which concepts are searched. Pure → unit-tested.
+function wosSingleLineQuery(blocks, pico) {
+  const groups = conceptGroupsWith(blocks, pico, wosTermStr, true);
+  if (!groups.length) return '';
+  let q = groups.map(function(g){ return 'TS=' + g.expr; }).join(' AND ');
+  const rd = resolveDesign((pico && pico.design) || '');
+  if (rd && rd.wos) q += ' AND ' + rd.wos;
+  const py = wosDateClause(pico);
+  if (py) q += ' AND ' + py;
+  return q;
+}
+
+// Full numbered Web of Science strategy for the methods section / copy-and-paste:
+// one TS=(…) set per concept, the design set (DESIGN_FILTERS[..].wos — the same
+// Cochrane HSSS term family in WoS syntax), a PY= set for the date window, then
+// the #N AND-combination. Same sets as wosSingleLineQuery, presented set-by-set.
+function wosStrategyText(blocks, pico) {
+  const groups = conceptGroupsWith(blocks, pico, wosTermStr, true);
+  if (!groups.length) return '';
+  const lines = [], refs = [];
+  groups.forEach(function(g){ lines.push('#' + (lines.length + 1) + ' TS=' + g.expr); refs.push('#' + lines.length); });
+  const rd = resolveDesign((pico && pico.design) || '');
+  if (rd && rd.wos) { lines.push('#' + (lines.length + 1) + ' ' + rd.wos); refs.push('#' + lines.length); }
+  const py = wosDateClause(pico);
+  if (py) { lines.push('#' + (lines.length + 1) + ' ' + py); refs.push('#' + lines.length); }
+  if (refs.length > 1) lines.push('#' + (lines.length + 1) + ' ' + refs.join(' AND '));
+  return lines.join('\n');
+}
+
 // Pure: deterministic per-group query strings from the skeleton, using the same
 // translators the workbench bars use. Guarantees strategy reproducibility.
 function assembleProtocolQueries(blocks, pico) {
@@ -7648,6 +7924,10 @@ function assembleProtocolQueries(blocks, pico) {
     // from the active design — recorded reproducibly via the protocol's pico.
     out[gid] = (gid === 'epmc' || gid === 'scopus') ? applyDesignClause(gid, base, design) : base;
   });
+  // Web of Science: recorded for the protocol/report and shown in its workbench
+  // panel, but never executed here — Clarivate's API rejects browser CORS, so the
+  // strategy is run in the WoS interface and the export imported as a pool slice.
+  out.wos = wosSingleLineQuery(blocks, pico);
   // Phrase proximity (off by default): apply each engine's native syntax to the
   // recorded query strings for the engines that support it. PubMed → [tiab:~N];
   // Europe PMC → Lucene "phrase"~N. Scopus/OpenAlex/CT.gov keep exact phrases
@@ -7774,7 +8054,7 @@ function retestProtocol() {
   if (!proj || !proj.searchProtocol) { showToast('Freeze a protocol first', '#f59e0b'); return; }
   const sp = proj.searchProtocol;
   const reassembled = assembleProtocolQueries(sp.blocks, sp.pico);
-  const strategyOk = ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex'].every(function(k){
+  const strategyOk = ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex','wos'].every(function(k){
     if (!sp.queries[k]) return true;
     const gp = (sp.groupProvenance && sp.groupProvenance[k]) || { method: 'deterministic' };
     if (gp.method && gp.method !== 'deterministic') return true; // AI/manual: frozen string replayed verbatim, not re-derived
@@ -7866,7 +8146,7 @@ function renderProtocolPanel() {
   card.style.display = 'block';
 
   let html = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">';
-  html += '<span class="step-num">4</span>';
+  html += '<span class="step-num">5</span>';
   html += '<div class="card-label" style="margin-bottom:0">Reproducible search protocol</div>';
   if (sp) html += '<span style="font-size:11px;color:var(--ev-ai-text);border:1px solid #a78bfa44;border-radius:10px;padding:2px 8px">v' + sp.version + ' \u00b7 ' + new Date(sp.created).toLocaleDateString() + '</span>';
   if (proj) html += '<span style="font-size:11px;color:var(--ev-text-dim)">' + esc(proj.name) + '</span>';
@@ -7880,7 +8160,7 @@ function renderProtocolPanel() {
     html += '</div>';
   } else {
     html += '<div style="font-size:11px;color:var(--ev-text-dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Frozen query strings</div>';
-    ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex'].forEach(function(gid){
+    ['pubmed','epmc','scopus','keyword','clinicaltrials','openalex','wos'].forEach(function(gid){
       if (!sp.queries[gid]) return;
       const gm = (sp.groupProvenance && sp.groupProvenance[gid] && sp.groupProvenance[gid].method) || 'deterministic';
       const badge = (gm === 'ai' || gm === 'ai-edited')
@@ -7975,7 +8255,7 @@ function screenPool() {
   // path must populate them too or the "Identified" line shows "undefined".
   function sumSliceCounts(ids){ return ids.reduce(function(s,id){ return s + ((poolSlices[id] && poolSlices[id].count) || 0); }, 0); }
   const poolPrimaryRaw   = sumSliceCounts(['pubmed','europepmc','cochrane']);
-  const poolSecondaryRaw = sumSliceCounts(['semantic','openalex','scopus','clinicaltrials']);
+  const poolSecondaryRaw = sumSliceCounts(['semantic','openalex','scopus','clinicaltrials','wos']);
   lastSearchProvenance = {
     primaryQuery: (poolSlices.pubmed && poolSlices.pubmed.query) || '',
     secondaryQuery: '',
@@ -8730,6 +9010,464 @@ function fetchEuropePMC(query, maxResults, sourceLabel) {
     if (epmcPartial) all.partial = epmcPartial;
     return all;
   });
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PRESS — Peer Review of Electronic Search Strategies (2015 Guideline Statement)
+// ══════════════════════════════════════════════════════════════════════════════
+// McGowan J, Sampson M, Salzwedel DM, Cogo E, Foerster V, Lefebvre C. PRESS Peer
+// Review of Electronic Search Strategies: 2015 Guideline Statement. J Clin
+// Epidemiol 2016;75:40-46. doi:10.1016/j.jclinepi.2016.01.021
+//
+// PRESS peer-reviews the MEDLINE/PubMed strategy, and the guideline is explicit
+// about WHEN: after the MEDLINE search is prepared but BEFORE it is translated to
+// the other databases. That is exactly the seam between the Build tab and "Send
+// to workbench", so the review lives on the Build tab and runs against the same
+// concept blocks every translation is derived from.
+//
+// The 2015 consensus retained SIX of the original seven elements (the seventh —
+// skilled translation to additional databases — was dropped, left to searcher
+// discretion). PRESS is a structured REVIEW, not a score: the checks below
+// automate what is deterministically verifiable from the strategy, and the rest
+// is put to a human peer reviewer whose sign-off is what gets reported. No check
+// here gates the search.
+//
+// pressReview() is PURE (blocks + pico + options in, findings out) and returns
+// PLAIN TEXT — the renderer escapes it. Unit-tested.
+
+var PRESS_ELEMENTS = [
+  { id: 'p1', num: 1, title: 'Translation of the research question',
+    ask: 'Does the search fully reflect the research question? Is every concept represented, and are any missing or superfluous?' },
+  { id: 'p2', num: 2, title: 'Boolean and proximity operators',
+    ask: 'Are AND / OR / NOT (and any proximity operators) used correctly, and is the nesting right?' },
+  { id: 'p3', num: 3, title: 'Subject headings',
+    ask: 'Are the subject headings relevant, correctly spelled, and exploded or focused appropriately?' },
+  { id: 'p4', num: 4, title: 'Text word searching',
+    ask: 'Are enough free-text terms used — synonyms, acronyms, spelling variants, and appropriate truncation?' },
+  { id: 'p5', num: 5, title: 'Spelling, syntax and line numbers',
+    ask: 'Are there spelling or syntax errors, and are the line numbers / set combinations correct?' },
+  { id: 'p6', num: 6, title: 'Limits and filters',
+    ask: 'Are the limits and filters appropriate, justified, and unlikely to exclude relevant records?' }
+];
+
+var PRESS_CITATION = 'McGowan J, Sampson M, Salzwedel DM, Cogo E, Foerster V, Lefebvre C. ' +
+  'PRESS Peer Review of Electronic Search Strategies: 2015 Guideline Statement. ' +
+  'J Clin Epidemiol 2016;75:40-46.';
+
+// US ⇄ UK spelling variants. Applied to a free-text term to produce the OTHER
+// spelling so a concept missing its counterpart can be flagged — a classic PRESS
+// text-word finding and a real recall leak (MEDLINE does not map spellings in
+// free text). Deliberately conservative: an explicit medical stem map (which 'e'
+// becomes 'ae'/'oe' cannot be inferred in the US→UK direction) plus one
+// suffix-anchored -ise/-ize and -our/-or rule, each with a stop set — a WRONG
+// suggestion in a peer-review tool costs more than a missed one. Pure.
+var PRESS_SPELL_STEMS = [
+  ['haem', 'hem'], ['anaesthe', 'anesthe'], ['anaesthet', 'anesthet'], ['paediatr', 'pediatr'],
+  ['orthopaed', 'orthoped'], ['oesophag', 'esophag'], ['oedema', 'edema'], ['foetal', 'fetal'],
+  ['diarrhoea', 'diarrhea'], ['coeliac', 'celiac'], ['leukaem', 'leukem'], ['anaem', 'anem'],
+  ['gynaec', 'gynec'], ['caesar', 'cesar'], ['faec', 'fec'], ['oestrogen', 'estrogen'],
+  ['aetiolog', 'etiolog'], ['paralys', 'paralyz'], ['catheteris', 'catheteriz'],
+  ['manoeuvr', 'maneuver'], ['orthopaedic', 'orthopedic'], ['dyspnoea', 'dyspnea'],
+  ['apnoea', 'apnea'], ['ischaem', 'ischem'], ['analys', 'analyz'], ['tumour', 'tumor']
+];
+// Bases where -ise/-ize is not a dialect alternation (exercise, compromise …).
+var PRESS_ISE_STOP = { exerc:1, comprom:1, compr:1, surpr:1, prem:1, dem:1, desp:1, disgu:1,
+  improv:1, merchand:1, parad:1, enterpr:1, franch:1, expert:1, superv:1, advert:1, otherw:1,
+  precis:1, conc:1, dev:1 };
+// Words ending -our that are not the British spelling of an -or word.
+var PRESS_OUR_STOP = { contour:1, detour:1, velour:1, glamour:1 };
+
+function pressWordVariant(w) {
+  w = String(w || '').toLowerCase();
+  if (!w) return null;
+  let m;
+  for (let i = 0; i < PRESS_SPELL_STEMS.length; i++) {
+    const uk = PRESS_SPELL_STEMS[i][0], us = PRESS_SPELL_STEMS[i][1];
+    if (w.indexOf(uk) === 0) return us + w.slice(uk.length);
+    if (w.indexOf(us) === 0) return uk + w.slice(us.length);
+  }
+  // -ize / -ise family: randomised ⇄ randomized, randomisation ⇄ randomization
+  if ((m = w.match(/^(.{4,}?)(iz|is)(e|ed|es|ing|ation|ations)$/)) && !PRESS_ISE_STOP[m[1]]) {
+    return m[1] + (m[2] === 'iz' ? 'is' : 'iz') + m[3];
+  }
+  // A truncated stem carries the same alternation with the suffix cut off
+  // (randomis* ⇄ randomiz*) — the caller has already stripped the wildcard.
+  if ((m = w.match(/^(.{4,}?)(iz|is)$/)) && !PRESS_ISE_STOP[m[1]]) {
+    return m[1] + (m[2] === 'iz' ? 'is' : 'iz');
+  }
+  // -our ⇄ -or: tumour/tumor, behaviour/behavior
+  if (w.length >= 6 && /our$/.test(w) && !PRESS_OUR_STOP[w]) return w.slice(0, -3) + 'or';
+  if (/(tum|behavi|col|vap|hum|lab|fav|rig|vig)or$/.test(w)) return w.slice(0, -2) + 'our';
+  return null;
+}
+
+// The other spelling of a whole term (rewrites the first word that carries a
+// dialect marker, so a phrase keeps its shape). Truncation is preserved.
+function pressSpellingVariant(raw) {
+  const term = String(raw || '').trim();
+  if (!term) return null;
+  const trunc = (term.match(/[*?]+$/) || [''])[0];
+  const words = term.replace(/[*?]+$/, '').toLowerCase().split(/\s+/);
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length < 5) continue;                 // too short to carry a reliable marker
+    const v = pressWordVariant(words[i]);
+    if (v && v !== words[i]) { const copy = words.slice(); copy[i] = v; return copy.join(' ') + trunc; }
+  }
+  return null;
+}
+
+// Reviewer-visible finding. level: 'fail' (a defect PRESS would return for
+// revision) · 'warn' (likely weakness worth a look) · 'info' (a decision the
+// reviewer should confirm is deliberate) · 'pass' (verified correct).
+function pressFinding(level, text, fix) { return { level: level, text: text, fix: fix || '' }; }
+
+// Run the PRESS 2015 checks against a concept-block strategy. opts carries the
+// context the blocks don't hold: { proximity, maxResults }. Returns
+// [{ id, num, title, ask, findings[], worst }].
+function pressReview(blocks, pico, opts) {
+  opts = opts || {};
+  const p = pico || {};
+  const searched = searchableBlocks(blocks || []).filter(function(b){ return (b.terms || []).length; });
+  const omitted = (blocks || []).filter(function(b){ return b && b.inSearch === false && (b.terms || []).length; });
+  const groups = pubmedConceptGroups(blocks || [], p);
+  const query = assemblePubmedFromBlocks(blocks || [], p, true, true);
+  const allTerms = [];
+  searched.forEach(function(b){ (b.terms || []).forEach(function(t){ allTerms.push({ b: b, t: t }); }); });
+  function roleBlocks(role) { return searched.filter(function(b){ return (b.role || 'other') === role; }); }
+  const out = [];
+
+  // ── 1. Translation of the research question ────────────────────────────────
+  const f1 = [];
+  if (!searched.length) f1.push(pressFinding('fail', 'No concept is being searched — the strategy is empty.', 'Add concept blocks with terms in step 2.'));
+  else {
+    [['p', 'condition', 'Population'], ['i', 'intervention', 'Intervention'], ['o', 'outcome', 'Outcome']].forEach(function(pr) {
+      const stated = String(p[pr[0]] || '').trim();
+      if (!stated) return;
+      const omittedHere = omitted.some(function(b){ return (b.role || 'other') === pr[1]; });
+      if (roleBlocks(pr[1]).length) f1.push(pressFinding('pass', pr[2] + ' concept from the PICO is represented in the search.'));
+      else if (omittedHere) f1.push(pressFinding('info', pr[2] + ' concept exists but is deliberately not searched.',
+        pr[1] === 'outcome'
+          ? 'Standard Cochrane practice for effectiveness questions — outcomes are screened for, not searched, because they are reported too inconsistently. Confirm it is deliberate and record the reason in the protocol.'
+          : 'Confirm this is deliberate and record the reason in the protocol.'));
+      else f1.push(pressFinding('fail', pr[2] + ' is stated in the PICO ("' + stated.slice(0, 60) + '") but no concept block covers it.',
+        'Add a concept block for it, or amend the PICO so the search and the question agree.'));
+    });
+    const comparatorOmitted = omitted.some(function(b){ return (b.role || 'other') === 'comparator'; });
+    if (String(p.c || '').trim() && !roleBlocks('comparator').length && !comparatorOmitted) {
+      f1.push(pressFinding('info', 'A comparator is stated in the PICO; it is merged into the intervention OR-set rather than searched as its own AND-ed concept.',
+        'That is the recommended sensitive structure — confirm it matches your protocol.'));
+    }
+    if (searched.length === 1) f1.push(pressFinding('warn', 'Only one concept is searched, so the strategy is unfocused and will retrieve a very large set.',
+      'Most questions need at least a population AND an intervention concept.'));
+    if (searched.length >= 4) f1.push(pressFinding('warn', searched.length + ' concepts are AND-combined — every extra AND multiplies the chance of missing an eligible record.',
+      'Cochrane guidance is to search the fewest concepts that define the question (often population + intervention) and screen for the rest.'));
+    searched.forEach(function(b){
+      if ((b.terms || []).length === 1) f1.push(pressFinding('warn', 'The concept "' + (b.concept || 'concept') + '" has a single search term.',
+        'A concept with no synonyms is the commonest cause of missed records — add alternate wordings.'));
+    });
+  }
+  out.push({ id: 'p1', findings: f1 });
+
+  // ── 2. Boolean and proximity operators ─────────────────────────────────────
+  const f2 = [];
+  const opens = (query.match(/\(/g) || []).length, closes = (query.match(/\)/g) || []).length;
+  if (opens !== closes) f2.push(pressFinding('fail', 'Unbalanced parentheses in the assembled query (' + opens + ' opening, ' + closes + ' closing).',
+    'A term almost certainly contains a stray bracket — check the concept blocks.'));
+  else if (query) f2.push(pressFinding('pass', 'Parentheses are balanced: synonyms are OR-ed inside each concept and the concepts are AND-combined, so operator precedence is explicit rather than left to the database.'));
+  const notTerms = allTerms.filter(function(x){ return /(^|\s)not(\s|$)/i.test(String(x.t.term || '')); });
+  if (notTerms.length) f2.push(pressFinding('warn', 'A search term contains the operator NOT ("' + notTerms[0].t.term + '").',
+    'PRESS advises using NOT sparingly — it silently removes records that merely mention the excluded term. Prefer narrowing the positive terms.'));
+  if (allTerms.some(function(x){ return /^(and|or|not)$/i.test(String(x.t.term || '').trim()); })) {
+    f2.push(pressFinding('fail', 'A bare Boolean operator is being used as a search term.', 'Remove it — PubMed reads it as an operator, corrupting the set.'));
+  }
+  if (p.comparatorLogic === 'and' && (roleBlocks('comparator').length || omitted.some(function(b){ return (b.role || 'other') === 'comparator'; }))) {
+    f2.push(pressFinding('warn', 'Intervention and comparator are AND-combined, so a record must mention BOTH arms to be retrieved.',
+      'This favours precision over recall and can miss eligible trials that name only one arm in the title/abstract. Justify it in the protocol, or switch to OR.'));
+  }
+  if (opts.proximity > 0) f2.push(pressFinding('info', 'Phrase proximity is switched on (~' + opts.proximity + ' words), so multi-word phrases match with intervening words.',
+    'Applied natively in PubMed ([tiab:~N]) and Europe PMC; the other engines keep the exact phrase. Report it as a search decision.'));
+  out.push({ id: 'p2', findings: f2 });
+
+  // ── 3. Subject headings ────────────────────────────────────────────────────
+  const f3 = [];
+  const meshTerms = allTerms.filter(function(x){ return x.t.field === 'mesh'; });
+  const invalidMesh = meshTerms.filter(function(x){ return x.t.meshInvalid === true; });
+  const unchecked = meshTerms.filter(function(x){ return x.t.meshInvalid === undefined; });
+  if (!meshTerms.length) {
+    f3.push(pressFinding('warn', 'No MeSH headings are used anywhere in the strategy.',
+      'A free-text-only MEDLINE search misses records whose title and abstract word the concept differently from you. Add the relevant descriptors.'));
+  } else {
+    if (invalidMesh.length) f3.push(pressFinding('fail', invalidMesh.length + ' heading' + (invalidMesh.length === 1 ? ' is' : 's are') + ' not in the MeSH thesaurus (e.g. "' + invalidMesh[0].t.term + '") — PubMed retrieves nothing for them.',
+      'Use "Validate MeSH" in step 2 and take the suggested official descriptor.'));
+    else if (unchecked.length) f3.push(pressFinding('warn', 'The MeSH headings have not been validated against the live NCBI index in this session.',
+      'Click "Validate MeSH" in step 2 — an invalid heading fails silently rather than erroring.'));
+    else f3.push(pressFinding('pass', 'All ' + meshTerms.length + ' MeSH heading' + (meshTerms.length === 1 ? ' was' : 's were') + ' verified against the live NCBI index.'));
+    const floating = meshTerms.filter(function(x){ return String(x.t.term || '').indexOf('/') !== -1; });
+    if (floating.length) f3.push(pressFinding('warn', 'A heading uses a floating subheading ("' + floating[0].t.term + '").',
+      'Subheadings are applied inconsistently by indexers; prefer the plain descriptor plus free text.'));
+    f3.push(pressFinding('info', 'Headings are searched with automatic explosion — "X"[Mesh] includes every narrower heading beneath it.',
+      'That is the sensitive default. If a heading should NOT be exploded, note it: the app does not emit [Mesh:NoExp].'));
+    const noMesh = searched.filter(function(b){ return !(b.terms || []).some(function(t){ return t.field === 'mesh'; }); });
+    if (noMesh.length) f3.push(pressFinding('warn', noMesh.length + ' searched concept' + (noMesh.length === 1 ? '' : 's') + ' carry no subject heading (' + noMesh.map(function(b){ return b.concept || 'concept'; }).slice(0, 3).join(', ') + ').',
+      'Check whether a relevant MeSH descriptor exists for each — free text alone misses records indexed under a heading you did not use.'));
+  }
+  out.push({ id: 'p3', findings: f3 });
+
+  // ── 4. Text word searching ─────────────────────────────────────────────────
+  const f4 = [];
+  const gaps = blockCoverageGaps(blocks || []);
+  if (gaps.length) f4.push(pressFinding('fail', gaps.length + ' concept' + (gaps.length === 1 ? ' is' : 's are') + ' controlled-vocabulary only, with no free text (' + gaps.slice(0, 3).join(', ') + ').',
+    'MeSH catches only what an indexer tagged, and travels to no other database — add title/abstract synonyms ("+ synonyms from MeSH" pulls the official entry terms).'));
+  else if (searched.length) f4.push(pressFinding('pass', 'Every searched concept combines subject headings with free-text synonyms.'));
+  const missingVariants = [];
+  searched.forEach(function(b) {
+    const present = {};
+    (b.terms || []).forEach(function(t){ present[String(t.term || '').toLowerCase().replace(/[*?]+$/, '').trim()] = 1; });
+    (b.terms || []).forEach(function(t) {
+      if (t.field !== 'tiab') return;
+      const v = pressSpellingVariant(t.term);
+      if (v && !present[v.replace(/[*?]+$/, '')]) missingVariants.push({ concept: b.concept || 'concept', term: t.term, variant: v });
+    });
+  });
+  if (missingVariants.length) {
+    const eg = missingVariants.slice(0, 3).map(function(m){ return '"' + m.term + '" → "' + m.variant + '"'; }).join(', ');
+    f4.push(pressFinding('warn', missingVariants.length + ' free-text term' + (missingVariants.length === 1 ? ' is' : 's are') + ' missing the other US/UK spelling: ' + eg + '.',
+      'MEDLINE does not map spellings in free text, so both forms must be searched explicitly.'));
+  } else if (allTerms.some(function(x){ return x.t.field === 'tiab'; })) {
+    f4.push(pressFinding('pass', 'No missing US/UK spelling variants were detected among the free-text terms.'));
+  }
+  const shortTrunc = allTerms.filter(function(x){
+    const w = String(x.t.term || '').trim();
+    return x.t.field === 'tiab' && /[*?]$/.test(w) && w.replace(/[*?]+$/, '').length < 4;
+  });
+  if (shortTrunc.length) f4.push(pressFinding('warn', 'Truncation is applied to a very short stem ("' + shortTrunc[0].t.term + '").',
+    'A stem under four characters matches unrelated words and floods the set — lengthen it, or spell the word forms out.'));
+  const truncated = allTerms.filter(function(x){ return x.t.field === 'tiab' && /[*?]$/.test(String(x.t.term || '')); });
+  if (truncated.length) f4.push(pressFinding('info', truncated.length + ' term' + (truncated.length === 1 ? ' uses' : 's use') + ' truncation.',
+    'Truncation switches OFF PubMed automatic term mapping for that term, and ClinicalTrials.gov has no truncation at all (the app expands stems to word forms there). Keep the key full words alongside the stems.'));
+  const tagged = allTerms.filter(function(x){ return /\[[a-z:]+\]/i.test(String(x.t.term || '')); });
+  if (tagged.length) f4.push(pressFinding('fail', 'A term already carries a field tag ("' + tagged[0].t.term + '").',
+    'The app appends the field tag itself, so this yields a double tag PubMed mis-parses. Enter the term text only.'));
+  f4.push(pressFinding('info', 'Acronyms, brand names and lay terms cannot be checked automatically.',
+    'Read each concept once asking "how else would an author write this?" — abbreviations (e.g. TKA for total knee arthroplasty) and brand names are the usual omissions.'));
+  out.push({ id: 'p4', findings: f4 });
+
+  // ── 5. Spelling, syntax and line numbers ───────────────────────────────────
+  const f5 = [];
+  const smart = allTerms.filter(function(x){ return /[‘’“”]/.test(String(x.t.term || '')); });
+  if (smart.length) f5.push(pressFinding('fail', 'A term contains a curly (smart) quote: "' + smart[0].t.term + '".',
+    'PubMed does not treat curly quotes as phrase delimiters — retype with straight quotes, or none at all.'));
+  const unbalanced = allTerms.filter(function(x){
+    const w = String(x.t.term || '');
+    return ((w.match(/\(/g) || []).length !== (w.match(/\)/g) || []).length) || ((w.match(/"/g) || []).length % 2 !== 0);
+  });
+  if (unbalanced.length) f5.push(pressFinding('fail', 'A term has an unbalanced bracket or quote: "' + unbalanced[0].t.term + '".',
+    'Fix the term — it breaks the assembled query.'));
+  const dupWithin = [];
+  searched.forEach(function(b) {
+    const seen = {};
+    (b.terms || []).forEach(function(t) {
+      const k = String(t.term || '').toLowerCase().trim() + '|' + t.field;
+      if (seen[k]) dupWithin.push((b.concept || 'concept') + ': ' + t.term);
+      seen[k] = 1;
+    });
+  });
+  if (dupWithin.length) f5.push(pressFinding('warn', 'Duplicate term' + (dupWithin.length === 1 ? '' : 's') + ' within a concept (' + dupWithin.slice(0, 3).join('; ') + ').',
+    'Harmless to the results but it clutters the reported strategy — remove the repeat.'));
+  const crossConcept = {}, crossHits = [];
+  searched.forEach(function(b) {
+    const seenHere = {};
+    (b.terms || []).forEach(function(t) {
+      const k = String(t.term || '').toLowerCase().trim();
+      if (!k || seenHere[k]) return;
+      seenHere[k] = 1;
+      if (crossConcept[k] && crossConcept[k] !== (b.concept || 'concept')) crossHits.push(t.term + ' (' + crossConcept[k] + ' and ' + (b.concept || 'concept') + ')');
+      else crossConcept[k] = (b.concept || 'concept');
+    });
+  });
+  if (crossHits.length) f5.push(pressFinding('warn', 'The same term appears in two AND-combined concepts: ' + crossHits.slice(0, 2).join('; ') + '.',
+    'A term repeated across AND-ed sets narrows the search to records that use it in both senses — usually an error.'));
+  const emptyBlocks = (blocks || []).filter(function(b){ return b && b.inSearch !== false && !(b.terms || []).length; });
+  if (emptyBlocks.length) f5.push(pressFinding('warn', emptyBlocks.length + ' concept block' + (emptyBlocks.length === 1 ? ' is' : 's are') + ' empty and contribute nothing.',
+    'Add terms or remove the block, so the reported strategy matches what actually ran.'));
+  if (groups.length) f5.push(pressFinding('pass', 'Line numbering is generated rather than hand-typed: ' + groups.length + ' concept set' + (groups.length === 1 ? '' : 's') +
+    ' plus the combination line, built from the same groups as the flattened query — so set references cannot drift from what runs.'));
+  if (!f5.some(function(x){ return x.level === 'fail'; })) f5.push(pressFinding('info', 'Spelling of individual terms cannot be machine-checked.',
+    'Read the term list once for typos — a mis-spelled free-text term retrieves nothing and reports no error.'));
+  out.push({ id: 'p5', findings: f5 });
+
+  // ── 6. Limits and filters ──────────────────────────────────────────────────
+  const f6 = [];
+  const rd = resolveDesign(p.design || '');
+  if (rd) {
+    if (String(p.design || '').indexOf('rct') !== -1) {
+      f6.push(pressFinding('pass', 'The study-design limit uses the Cochrane Highly Sensitive Search Strategy for identifying randomized trials in MEDLINE (sensitivity- and precision-maximizing version, PubMed format) rather than a bare publication-type limit.',
+        'Cite it as such in the methods — PRESS asks that filters be validated and referenced.'));
+    } else {
+      f6.push(pressFinding('info', 'A study-design limit is applied: ' + rd.label + '.',
+        'Design filters trade recall for precision. State it in the protocol and satisfy yourself it cannot exclude an eligible design.'));
+    }
+    const relaxed = (typeof designFiltersRelaxed === 'function') ? designFiltersRelaxed(p.design || '') : [];
+    if (relaxed.length) f6.push(pressFinding('info', 'The design limit has no native equivalent on ' + relaxed.join(', ') + ', so those databases run the query unrestricted.',
+      'Their records are filtered at screening instead — report that rather than implying a uniform limit.'));
+  } else {
+    f6.push(pressFinding('pass', 'No study-design limit is applied — the most sensitive option.'));
+  }
+  if (p.dateFrom || p.dateTo) {
+    f6.push(pressFinding('warn', 'A publication-date limit is applied (' + (p.dateFrom || 'any') + ' to ' + (p.dateTo || 'present') + ').',
+      'PRESS asks that date limits be justified: a start date should mark when the intervention or technology became available, not convenience. Record the justification in the protocol.'));
+  } else {
+    f6.push(pressFinding('pass', 'No date limit is applied, so each database is searched from the start of its coverage.'));
+  }
+  f6.push(pressFinding('pass', 'No language limit is applied — restricting to English is a recognised source of bias, and the app never adds one.'));
+  if (rd && String(p.design || '').indexOf('rct') !== -1) {
+    f6.push(pressFinding('info', 'The RCT filter carries the standard animal-only exclusion: NOT (animals[mh] NOT humans[mh]).',
+      'This keeps records indexed for both humans and animals, unlike a bare humans[mh] limit — the Cochrane-recommended form.'));
+  }
+  const maxR = parseInt(opts.maxResults, 10);
+  if (maxR && maxR < 500) f6.push(pressFinding('warn', 'Retrieval is capped at ' + maxR + ' records per database in the search settings.',
+    'That is a retrieval cap, not a search limit: if a database matches more, the surplus never reaches screening. Raise it (or use "+ all") before the definitive run.'));
+  out.push({ id: 'p6', findings: f6 });
+
+  const rank = { fail: 3, warn: 2, info: 1, pass: 0 };
+  return out.map(function(sec) {
+    const def = PRESS_ELEMENTS.filter(function(e){ return e.id === sec.id; })[0] || {};
+    let worst = 'pass';
+    sec.findings.forEach(function(f){ if (rank[f.level] > rank[worst]) worst = f.level; });
+    return { id: sec.id, num: def.num, title: def.title, ask: def.ask, findings: sec.findings, worst: worst };
+  });
+}
+
+// Counts across a PRESS review, for the summary chip. Pure.
+function pressSummary(sections) {
+  const c = { fail: 0, warn: 0, info: 0, pass: 0 };
+  (sections || []).forEach(function(s){ (s.findings || []).forEach(function(f){ if (c[f.level] != null) c[f.level]++; }); });
+  return c;
+}
+
+// One-line plain-text verdict for the methods narrative and the search report.
+function pressVerdictText(sections) {
+  const c = pressSummary(sections);
+  if (c.fail) return c.fail + ' item' + (c.fail === 1 ? '' : 's') + ' need revision before the search is run';
+  if (c.warn) return c.warn + ' item' + (c.warn === 1 ? '' : 's') + ' flagged for the reviewer to consider';
+  return 'no defects detected by the automated checks';
+}
+
+// ── PRESS review UI (Build tab, step 4) ──────────────────────────────────────
+// The review runs against the LIVE concept blocks, so it always reflects what is
+// about to be sent to the workbench. Its findings are advisory: nothing here
+// blocks a search — PRESS is peer review, not validation.
+var pressLastReview = null;      // sections from the last run, for sign-off + export
+
+function pressRunOptions() {
+  return {
+    proximity: (typeof searchProximity !== 'undefined') ? searchProximity : 0,
+    maxResults: parseInt(((document.getElementById('max-results') || {}).value), 10) || 0
+  };
+}
+
+var PRESS_LEVEL_STYLE = {
+  fail: { icon: '✕', colour: 'var(--ev-danger-text)', label: 'Revise' },
+  warn: { icon: '⚠', colour: 'var(--ev-warn-text)',   label: 'Consider' },
+  info: { icon: 'ℹ', colour: 'var(--ev-link)',        label: 'Confirm' },
+  pass: { icon: '✓', colour: 'var(--ev-ok-text)',     label: 'OK' }
+};
+
+function runPressReview() {
+  if (!buildBlocks.length) { showToast('Draft or add concept blocks first — PRESS reviews the assembled strategy', '#f59e0b'); return; }
+  pressLastReview = pressReview(buildBlocks, picoInputs(), pressRunOptions());
+  renderPressPanel();
+  const c = pressSummary(pressLastReview);
+  showToast('PRESS review complete — ' + pressVerdictText(pressLastReview),
+    c.fail ? '#ef4444' : c.warn ? '#f59e0b' : '#22c55e');
+}
+
+// Compact status line under the assembled query: keeps the peer review visible
+// at the point the strategy is being edited, without running it on every keystroke.
+function pressStatusChipHtml() {
+  if (!pressLastReview) return '';
+  const c = pressSummary(pressLastReview);
+  const colour = c.fail ? 'var(--ev-danger-text)' : c.warn ? 'var(--ev-warn-text)' : 'var(--ev-ok-text)';
+  return '<span style="color:' + colour + ';font-weight:600">PRESS: ' + esc(pressVerdictText(pressLastReview)) + '</span>';
+}
+
+function renderPressPanel() {
+  const card = document.getElementById('press-card');
+  const box = document.getElementById('press-body');
+  if (!card || !box) return;
+  card.style.display = 'block';
+  if (!pressLastReview) {
+    box.innerHTML = '<div style="font-size:12px;color:var(--ev-text-muted);line-height:1.6">Peer review of the assembled PubMed strategy against the six PRESS 2015 elements. ' +
+      'The guideline places this step <b>after the MEDLINE strategy is prepared but before it is translated to the other databases</b> — that is, right here, before you send it to the workbench. ' +
+      'Checks that can be verified from the strategy are run automatically; the rest are put to you as a reviewer.</div>';
+    return;
+  }
+  const c = pressSummary(pressLastReview);
+  let html = '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">' +
+    ['fail','warn','info','pass'].map(function(lv){
+      if (!c[lv]) return '';
+      const st = PRESS_LEVEL_STYLE[lv];
+      return '<span style="font-size:11px;color:' + st.colour + ';border:1px solid currentColor;border-radius:10px;padding:2px 9px">' + st.icon + ' ' + c[lv] + ' ' + esc(st.label) + '</span>';
+    }).join('') + '</div>';
+
+  pressLastReview.forEach(function(sec) {
+    const st = PRESS_LEVEL_STYLE[sec.worst] || PRESS_LEVEL_STYLE.pass;
+    html += '<div style="border-top:1px solid var(--ev-border-soft);padding:10px 0">' +
+      '<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:3px">' +
+        '<span style="font-size:12px;font-weight:700;color:var(--ev-text-body)">' + sec.num + '. ' + esc(sec.title) + '</span>' +
+        '<span style="font-size:11px;color:' + st.colour + '">' + st.icon + ' ' + esc(st.label) + '</span>' +
+      '</div>' +
+      '<div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin-bottom:6px">' + esc(sec.ask) + '</div>';
+    sec.findings.forEach(function(f) {
+      const fs = PRESS_LEVEL_STYLE[f.level] || PRESS_LEVEL_STYLE.info;
+      html += '<div style="display:flex;gap:8px;margin-bottom:5px;line-height:1.5">' +
+        '<span style="color:' + fs.colour + ';flex:none;font-size:12px">' + fs.icon + '</span>' +
+        '<span style="font-size:12px;color:var(--ev-text-2)">' + esc(f.text) +
+        (f.fix ? '<span style="display:block;font-size:11px;color:var(--ev-text-dim);margin-top:2px">' + esc(f.fix) + '</span>' : '') +
+        '</span></div>';
+    });
+    html += '</div>';
+  });
+
+  // Reviewer sign-off — PRESS is a peer review by a second searcher, so the
+  // record of WHO reviewed it and WHEN is the reportable output, not the checks.
+  const proj = projects.find(function(p){ return p.id === currentProjectId; });
+  const saved = (proj && proj.pressReview) || null;
+  html += '<div style="border-top:1px solid var(--ev-border-soft);margin-top:6px;padding-top:11px">' +
+    '<div style="font-size:12px;font-weight:600;color:var(--ev-text-2);margin-bottom:3px">Peer-reviewer sign-off</div>' +
+    '<div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin-bottom:8px">PRESS is a review by a second person — ideally an information specialist. Record who reviewed the strategy and what changed; it is saved on the project and printed in the PRISMA-S search report.</div>' +
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">' +
+      '<input id="press-reviewer" placeholder="reviewer name or role" value="' + esc(saved ? (saved.reviewer || '') : '') + '" style="flex:1;min-width:170px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body)" />' +
+      '<button ' + evAttr('click', 'savePressSignoff') + ' style="font-size:12px;padding:8px 14px;border-radius:6px;border:1px solid #16a34a55;background:var(--ev-ok-bg);color:var(--ev-ok-text);cursor:pointer;font-weight:600;white-space:nowrap">✓ Record sign-off</button>' +
+    '</div>' +
+    '<textarea id="press-notes" rows="2" placeholder="changes made in response to the review (optional)" style="width:100%;box-sizing:border-box;margin-top:8px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical">' + esc(saved ? (saved.notes || '') : '') + '</textarea>';
+  if (saved && saved.at) {
+    html += '<div style="font-size:11px;color:var(--ev-ok-text);margin-top:6px">✓ Reviewed by ' + esc(saved.reviewer || 'unnamed reviewer') + ' on ' + esc(String(saved.at).slice(0, 10)) +
+      ' — ' + esc(saved.verdict || '') + '</div>';
+  }
+  html += '<div style="font-size:10px;color:var(--ev-text-dim);margin-top:10px;line-height:1.5">' + esc(PRESS_CITATION) + '</div>';
+  html += '</div>';
+  box.innerHTML = html;
+}
+
+// Persist the sign-off (and the verdict at the time of signing) onto the project,
+// so the search report can state that the strategy was peer-reviewed and by whom.
+function savePressSignoff() {
+  if (!pressLastReview) { showToast('Run the PRESS review first', '#f59e0b'); return; }
+  const proj = ensureProtocolProject();
+  const reviewer = ((document.getElementById('press-reviewer') || {}).value || '').trim();
+  const notes = ((document.getElementById('press-notes') || {}).value || '').trim();
+  proj.pressReview = {
+    at: new Date().toISOString(),
+    reviewer: reviewer,
+    notes: notes,
+    verdict: pressVerdictText(pressLastReview),
+    counts: pressSummary(pressLastReview),
+    guideline: PRESS_CITATION
+  };
+  saveProjects();
+  renderPressPanel();
+  showToast('PRESS sign-off recorded on "' + proj.name + '"', '#22c55e');
 }
 
 // ════════════════════════════════════════════════════════════════════════
@@ -12474,7 +13212,27 @@ function evNormaliseExtractionFields(arr) {
 var EV_PROJECT_KEYS = ['id', 'name', 'desc', 'picoQuestion', 'created', 'dualReviewer',
   'activeReviewer', 'packetRole', 'protocol', 'gradeOutcomes', 'searchEvents',
   'extractionFields', 'searchProtocol', 'protocolVersions', 'runs', 'scanCriteria',
-  'validationRef'];
+  'validationRef', 'pressReview'];
+
+// The PRESS peer-review sign-off (04d). Every field is reported verbatim in the
+// PRISMA-S search report and the methods paragraph, so a restored backup must not
+// be able to smuggle markup or an unbounded string into it — clamp each field and
+// rebuild the counts as numbers rather than trusting the stored shape.
+function evNormalisePressReview(pr) {
+  if (!pr || typeof pr !== 'object' || Array.isArray(pr)) return null;
+  const c = (pr.counts && typeof pr.counts === 'object') ? pr.counts : {};
+  return {
+    at: evIsoTimestamp(pr.at),
+    reviewer: evClampStr(pr.reviewer, 200),
+    notes: evClampStr(pr.notes, 5000),
+    verdict: evClampStr(pr.verdict, 300),
+    counts: {
+      fail: evNumOr(c.fail, 0, 1000, 0, true), warn: evNumOr(c.warn, 0, 1000, 0, true),
+      info: evNumOr(c.info, 0, 1000, 0, true), pass: evNumOr(c.pass, 0, 1000, 0, true)
+    },
+    guideline: evClampStr(pr.guideline, 500)
+  };
+}
 function evNormaliseProject(pr) {
   if (!pr || typeof pr !== 'object') return null;
   const cleaned = evDeepClean(pr, 0) || {};
@@ -12495,6 +13253,10 @@ function evNormaliseProject(pr) {
   if ('gradeOutcomes' in out) out.gradeOutcomes = evNormaliseGradeOutcomes(out.gradeOutcomes) || [];
   if ('searchEvents' in out) out.searchEvents = Array.isArray(out.searchEvents) ? out.searchEvents.slice(-50) : [];
   if ('extractionFields' in out) out.extractionFields = evNormaliseExtractionFields(out.extractionFields) || [];
+  if ('pressReview' in out) {
+    const npr = evNormalisePressReview(out.pressReview);
+    if (npr) out.pressReview = npr; else delete out.pressReview;
+  }
   return out;
 }
 // Assessment records enter IndexedDB from two import paths (full backup restore
@@ -14085,6 +14847,20 @@ function buildProjectSearchReportHtml(proj) {
     return '<h2>' + esc(head) + '</h2>' + limitsHtml + table + '<p class="sr-yield">' + esc(yield_) + '</p>';
   }).join('');
 
+  // PRISMA-S item 5 — peer review of the search strategy. Reported when a PRESS
+  // sign-off exists on the project; when it doesn't, the report says so plainly
+  // rather than staying silent, because "not peer reviewed" is itself reportable.
+  const pr = proj && proj.pressReview;
+  const pressSection = '<div class="sr-note"><b>Peer review of the search strategy (PRISMA-S item 5):</b> ' +
+    (pr && pr.at
+      ? 'the MEDLINE/PubMed strategy was peer reviewed against the PRESS 2015 Evidence-Based Checklist by ' +
+        esc(pr.reviewer || 'an unnamed reviewer') + ' on ' + esc(String(pr.at).slice(0, 10)) +
+        ' (' + esc(pr.verdict || '') + ')' +
+        (pr.notes ? '. Changes made in response: ' + esc(pr.notes) : '') + '. ' +
+        esc(pr.guideline || '')
+      : 'no PRESS peer review has been recorded for this search.') +
+    '</div>';
+
   const updates = ev.length - 1;
   const title = (proj.name || 'Project') + ' — Search report (PRISMA-S)';
   return '<!doctype html><html lang="en"><head><meta charset="utf-8">' +
@@ -14110,13 +14886,14 @@ function buildProjectSearchReportHtml(proj) {
     '<p class="sr-sub">' + ev.length + ' search' + (ev.length === 1 ? '' : 'es') + ' recorded (original' +
       (updates ? ' + ' + updates + ' update' + (updates === 1 ? '' : 's') : '') + ') · generated ' + esc(new Date().toLocaleDateString()) + '</p>' +
     sections +
+    pressSection +
     '<div class="sr-note"><b>Deduplication (PRISMA-S item 16):</b> records were deduplicated automatically at retrieval ' +
     '(matching DOI, PMID, or normalised title and year); at each update search, records already present in the project ' +
     'were skipped so only new records entered screening.</div>' +
     '<p class="sr-cite">Report structure follows PRISMA-S: Rethlefsen ML, Kirtley S, Waffenschmidt S, et al. ' +
     'PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews. ' +
-    'Syst Rev 2021;10:39. Items covered: 1–2 (databases), 6 (limits), 8 (full strategies, as executed), ' +
-    '13 (dates of searches), 4/14 (update searches and yields), 16 (deduplication).</p>' +
+    'Syst Rev 2021;10:39. Items covered: 1–2 (databases), 5 (peer review of the strategy), 6 (limits), ' +
+    '8 (full strategies, as executed), 13 (dates of searches), 4/14 (update searches and yields), 16 (deduplication).</p>' +
     '</body></html>';
 }
 
@@ -14400,6 +15177,15 @@ function copyMethodsNarrative() {
   if (df) s.push('The search was restricted to ' + df.label.toLowerCase() + '.');
   const limits = searchLimitDescriptions();
   if (limits.length) s.push('The following search options were applied: ' + listToProse(limits.map(function(l){ return l.charAt(0).toLowerCase() + l.slice(1); })) + '.');
+  // PRISMA-S item 5 — peer review of the strategy. Reported only once a PRESS
+  // sign-off exists: claiming a peer review that never happened is worse than
+  // omitting the sentence.
+  const proj = projects.find(function(x){ return x.id === currentProjectId; });
+  const pressRec = proj && proj.pressReview;
+  if (pressRec && pressRec.at) {
+    s.push('The MEDLINE/PubMed strategy was peer reviewed against the PRESS 2015 Evidence-Based Checklist' +
+      (pressRec.reviewer ? ' by ' + pressRec.reviewer : '') + ' on ' + String(pressRec.at).slice(0, 10) + '.');
+  }
   s.push('The search identified ' + (p.totalIdentified || 0) + ' records; after removing ' + (p.duplicatesRemoved || 0) + ' duplicate' + ((p.duplicatesRemoved === 1) ? '' : 's') + ', ' + (p.uniqueRecords || 0) + ' unique records were screened.');
   s.push('Full per-database search strings are reported in the supplementary material.');
   const text = s.join(' ');
@@ -15969,7 +16755,11 @@ function renderUploaderResults(p, clKey, alsoRob2, title) {
   const checked = Array.from(document.querySelectorAll('#ucl-checklist-grid-quality input[type=checkbox]:checked, #ucl-checklist-grid-bias input[type=checkbox]:checked')).map(function(cb){ return cb.value; });
   const clDefs = checked.length ? checked : ([clKey].concat(alsoRob2 && clKey !== 'ROB2' ? ['ROB2'] : []));
 
-  const BIAS_TOOLS = { ROB2:1, ROBINS2:1, NOS:1, JADAD:1 };
+  // Every appraisal tool that yields a judgement rather than a reporting
+  // percentage. AMSTAR 2 and QUADAS-2 belong here too: a "% reported" badge on
+  // either is meaningless (AMSTAR 2 yields a confidence rating capped by critical
+  // domains; QUADAS-2 yields per-domain low/high).
+  const BIAS_TOOLS = { ROB2:1, ROBINS2:1, QUADAS2:1, NOS:1, JADAD:1, AMSTAR2:1 };
 
   let html = '';
   if (p.retracted) html += retractionBannerHtml(p);
@@ -15987,43 +16777,7 @@ function renderUploaderResults(p, clKey, alsoRob2, title) {
     html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
 
     if (isBiasTool) {
-      let overallBadge = '';
-      if (ck === 'ROB2' || ck === 'ROBINS2') {
-        const rob = (p.checklists && p.checklists[ck]) || {};
-        let oj = rob['__overall_judgement__'] || '';
-        if (!oj) {
-          const dj = rob['__domain_judgements__'] || {};
-          const djVals = Object.values(dj).map(function(v){ return (v+'').toLowerCase(); });
-          if (djVals.length) {
-            if (djVals.indexOf('high') >= 0) oj = 'high';
-            else if (djVals.indexOf('some_concerns') >= 0) oj = 'some_concerns';
-            else oj = 'low';
-          }
-        }
-        const ojColor = oj==='low'?'#22c55e':oj==='high'?'#ef4444':oj==='some_concerns'?'#f59e0b':'var(--ev-text-muted)';
-        const ojLabel = oj==='low'?'🟢 Low risk overall':oj==='high'?'🔴 High risk overall':oj==='some_concerns'?'🟡 Some concerns overall':'❓ Not yet assessed';
-        overallBadge = '<span class="ucl-score-badge" style="background:' + ojColor + '22;color:' + ojColor + ';border:1px solid ' + ojColor + '44">' + ojLabel + '</span>';
-      } else if (ck === 'NOS') {
-        const nosData = (p.checklists && p.checklists['NOS']) || {};
-        const nosItems = CHECKLISTS.NOS.items || [];
-        const stars = nosItems.filter(function(item){ return nosData[item.id] === 'yes'; }).length;
-        const maxStars = nosItems.length;
-        const starColor = stars >= 7 ? '#22c55e' : stars >= 4 ? '#f59e0b' : '#ef4444';
-        overallBadge = '<span class="ucl-score-badge" style="background:' + starColor + '22;color:' + starColor + ';border:1px solid ' + starColor + '44">&#11088; ' + stars + '/' + maxStars + ' stars</span>';
-      } else if (ck === 'JADAD') {
-        const jadData = (p.checklists && p.checklists['JADAD']) || {};
-        let jadScore = 0;
-        const jadItems = CHECKLISTS.JADAD.items || [];
-        jadItems.forEach(function(item) {
-          const val = jadData[item.id];
-          if (item.id === 'jad3' || item.id === 'jad6') { if (val === 'yes') jadScore -= 1; }
-          else { if (val === 'yes') jadScore += 1; }
-        });
-        jadScore = Math.max(0, jadScore);
-        const jadColor = jadScore >= 3 ? '#22c55e' : jadScore >= 2 ? '#f59e0b' : '#ef4444';
-        overallBadge = '<span class="ucl-score-badge" style="background:' + jadColor + '22;color:' + jadColor + ';border:1px solid ' + jadColor + '44">Jadad ' + jadScore + '/5</span>';
-      }
-      html += overallBadge;
+      html += uploaderBiasBadgeHtml(p, ck);
     } else {
       const sc = checklistScore(p, ck);
       const pct = sc ? sc.pct : 0;
@@ -16038,6 +16792,70 @@ function renderUploaderResults(p, clKey, alsoRob2, title) {
   });
 
   container.innerHTML = html;
+}
+
+// The overall badge for a judgement-based tool. One builder, used both at render
+// and on every item edit — before this, editing an item overwrote a RoB judgement
+// badge with a "% reported" score that the tool does not produce.
+function uploaderBiasBadgeHtml(p, ck) {
+  const wrap = function(bg, colour, border, text) {
+    return '<span class="ucl-score-badge" style="background:' + bg + ';color:' + colour + ';border:' + border + '">' + text + '</span>';
+  };
+  if (ck === 'AMSTAR2') {
+    // AMSTAR 2 is rated by critical-domain flaws (Shea 2017 cap rules), never by
+    // item coverage — reuse the single shared derivation so the uploader can't
+    // disagree with the project card or the results tab.
+    const amr = amstarConfidenceRating(p);
+    return amr ? wrap(amr.bg, amr.colour, '1px solid ' + amr.border, esc(amr.label))
+               : wrap('var(--ev-neutral-bg)', 'var(--ev-neutral-text)', 'none', '&#10067; Not yet rated');
+  }
+  if (ck === 'ROB2' || ck === 'ROBINS2' || ck === 'QUADAS2') {
+    const rob = (p.checklists && p.checklists[ck]) || {};
+    let oj = ((rob['__overall_judgement__'] || '') + '').toLowerCase();
+    if (!oj) {
+      // Worst domain wins. ROBINS-I V2 uses low/moderate/serious/critical and
+      // QUADAS-2 uses low/high, so all four vocabularies are ranked here.
+      const dj = rob['__domain_judgements__'] || {};
+      const vals = Object.values(dj).map(function(v){ return (v + '').toLowerCase(); });
+      if (vals.length) {
+        const worst = ['critical','high','serious','some_concerns','moderate'].filter(function(l){ return vals.indexOf(l) >= 0; })[0];
+        oj = worst || 'low';
+      }
+    }
+    const colour = oj === 'low' ? '#22c55e'
+                 : (oj === 'high' || oj === 'critical') ? '#ef4444'
+                 : oj === 'serious' ? '#f97316'
+                 : (oj === 'some_concerns' || oj === 'moderate') ? '#f59e0b'
+                 : 'var(--ev-text-muted)';
+    const label = oj === 'low' ? '🟢 Low risk overall'
+                : oj === 'high' ? '🔴 High risk overall'
+                : oj === 'critical' ? '🔴 Critical risk overall'
+                : oj === 'serious' ? '🟠 Serious risk overall'
+                : oj === 'moderate' ? '🟡 Moderate risk overall'
+                : oj === 'some_concerns' ? '🟡 Some concerns overall'
+                : '❓ Not yet assessed';
+    return wrap(colour + '22', colour, '1px solid ' + colour + '44', label);
+  }
+  if (ck === 'NOS') {
+    const nosData = (p.checklists && p.checklists.NOS) || {};
+    const nosItems = CHECKLISTS.NOS.items || [];
+    const stars = nosItems.filter(function(item){ return nosData[item.id] === 'yes'; }).length;
+    const colour = stars >= 7 ? '#22c55e' : stars >= 4 ? '#f59e0b' : '#ef4444';
+    return wrap(colour + '22', colour, '1px solid ' + colour + '44', '&#11088; ' + stars + '/' + nosItems.length + ' stars');
+  }
+  if (ck === 'JADAD') {
+    const jadData = (p.checklists && p.checklists.JADAD) || {};
+    let jadScore = 0;
+    (CHECKLISTS.JADAD.items || []).forEach(function(item) {
+      const val = jadData[item.id];
+      if (item.id === 'jad3' || item.id === 'jad6') { if (val === 'yes') jadScore -= 1; }
+      else if (val === 'yes') jadScore += 1;
+    });
+    jadScore = Math.max(0, jadScore);
+    const colour = jadScore >= 3 ? '#22c55e' : jadScore >= 2 ? '#f59e0b' : '#ef4444';
+    return wrap(colour + '22', colour, '1px solid ' + colour + '44', 'Jadad ' + jadScore + '/5');
+  }
+  return '';
 }
 
 function renderUploaderChecklistItems(p, ck) {
@@ -16100,15 +16918,19 @@ function renderUploaderChecklistItems(p, ck) {
   const items = cl.items || [];
   const sectionAt = {};
   (cl.sections || []).forEach(function(s){ sectionAt[s.at] = s.title; });   // optional section dividers
-  let html = '<div>';
+  let html = '<div>' + amstarPreambleHtml(ck);
   items.forEach(function(item) {
     if (sectionAt[item.id]) {
       html += '<div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--ev-link);margin:12px 0 5px;padding-bottom:3px;border-bottom:1px solid var(--ev-border)">' + esc(sectionAt[item.id]) + '</div>';
     }
     const val = clData[item.id] || 'unclear';
     const isBinaryTool = (ck === 'NOS' || ck === 'JADAD');
+    // AMSTAR 2 appraises CONDUCT, so its answers are the tool's own vocabulary
+    // (Yes / Partial Yes / No), not the reporting-checklist "Reported" wording.
     const opts = isBinaryTool
       ? [['yes','Yes ✓'],['no','No ✗'],['unclear','Unclear']]
+      : ck === 'AMSTAR2'
+      ? [['yes','Yes'],['partial','Partial Yes'],['no','No'],['unclear','Unclear'],['na','N/A — no meta-analysis']]
       : [['yes','Yes / Reported'],['partial','Partial'],['no','No / Not reported'],['unclear','Unclear'],['na','N/A']];
     html += '<div class="cl-item-row">';
     html += '<span class="cl-item-num" style="color:var(--ev-text-dim)">' + item.num + '</span>';
@@ -16221,11 +17043,17 @@ function updateUploaderDomainJudgement(pmid, ck, domainId, selectEl) {
 function refreshUploaderScore(pmid, ck) {
   const p = uploaderPapers[pmid];
   if (!p) return;
+  const badge = document.querySelector('#ucl-card-' + ck + ' .ucl-score-badge');
+  if (!badge) return;
+  // Judgement-based tools re-derive their own badge; only reporting checklists
+  // carry a coverage percentage.
+  const biasHtml = uploaderBiasBadgeHtml(p, ck);
+  if (biasHtml) { badge.outerHTML = biasHtml; return; }
   const sc = checklistScore(p, ck);
   const pct = sc ? sc.pct : 0;
   const scoreClass = pct >= 75 ? 'ucl-score-high' : pct >= 40 ? 'ucl-score-mid' : 'ucl-score-low';
-  const badge = document.querySelector('#ucl-card-' + ck + ' .ucl-score-badge');
-  if (badge) { badge.className = 'ucl-score-badge ' + scoreClass; badge.textContent = pct + '% reported'; }
+  badge.className = 'ucl-score-badge ' + scoreClass;
+  badge.textContent = pct + '% reported';
 }
 
 function exportUploaderCSV(ck) {
@@ -16240,9 +17068,11 @@ function exportUploaderCSV(ck) {
   const clData = (p.checklists && p.checklists[ck]) || {};
   const items = cl.items || [];
 
-  if (ck === 'ROB2' && cl.domains) {
+  // Every domain-based tool exports domain-by-domain (ROBINS-I V2 and QUADAS-2
+  // have no `items` array, so the item branch would have written an empty file).
+  if (cl.domains) {
     cl.domains.forEach(function(domain) {
-      domain.questions.forEach(function(q) {
+      (domain.questions || []).forEach(function(q) {
         const val = clData[q.id] || 'unclear';
         rows.push([domain.title, q.id, q.text, val, '']);
       });
@@ -16256,8 +17086,16 @@ function exportUploaderCSV(ck) {
     });
   }
 
-  const sc = checklistScore(p, ck);
-  rows.push(['', 'TOTAL SCORE', '', (sc ? sc.pct + '%' : 'N/A'), '']);
+  if (ck === 'AMSTAR2') {
+    // AMSTAR 2 has no percentage — the reportable result is the confidence rating
+    // and the critical-domain flaw count that produced it.
+    const amr = amstarConfidenceRating(p);
+    rows.push(['', 'OVERALL CONFIDENCE', 'Derived per Shea 2017 from critical-domain flaws', amr ? amr.label : 'Not yet rated', '']);
+    if (amr) rows.push(['', 'CRITICAL FLAWS', 'Critical-domain items answered "No"', String(amr.criticalFlaws), 'non-critical weaknesses: ' + amr.weaknesses]);
+  } else {
+    const sc = checklistScore(p, ck);
+    rows.push(['', 'TOTAL SCORE', '', (sc ? sc.pct + '%' : 'N/A'), '']);
+  }
 
   const csv = rows.map(function(r) {
     return r.map(csvCell).join(',');
@@ -16622,7 +17460,17 @@ var LICENCES = [
     cite: 'Shea BJ, Reeves BC, Wells G, et al. AMSTAR 2: a critical appraisal tool for systematic reviews that include randomised or non-randomised studies of healthcare interventions, or both. BMJ 2017;358:j4008.',
     licence: 'Open access (CC BY-NC 4.0)',
     permits: 'May be reproduced and adapted with attribution for non-commercial use. Question wording reproduced verbatim. Used here only because Evidentum is non-commercial.',
-    url: 'https://amstar.ca/' }
+    url: 'https://amstar.ca/' },
+  { name: 'PRESS 2015', kind: 'Peer review of electronic search strategies',
+    cite: 'McGowan J, Sampson M, Salzwedel DM, Cogo E, Foerster V, Lefebvre C. PRESS Peer Review of Electronic Search Strategies: 2015 Guideline Statement. J Clin Epidemiol 2016;75:40-46.',
+    licence: 'Open access (CC BY-NC-ND 4.0)',
+    permits: 'May be reproduced with attribution for non-commercial use. The six PRESS elements are named as published; the checks applied against them are Evidentum\'s own implementation, not the PRESS Guideline Assessment Form.',
+    url: 'https://doi.org/10.1016/j.jclinepi.2016.01.021' },
+  { name: 'PRISMA-S', kind: 'Reporting extension for literature searches',
+    cite: 'Rethlefsen ML, Kirtley S, Waffenschmidt S, et al. PRISMA-S: an extension to the PRISMA Statement for Reporting Literature Searches in Systematic Reviews. Syst Rev 2021;10:39.',
+    licence: 'Open access (CC BY 4.0)',
+    permits: 'May be reproduced and adapted with attribution. Used to structure the search report export.',
+    url: 'https://doi.org/10.1186/s13643-020-01542-z' }
 ];
 
 function renderLicences() {
@@ -20232,6 +21080,9 @@ evOn('h179', function (event) { importResultRecords(this); }); // import Embase/
 // Hand-registered constant handlers (kept BELOW the auto marker so a registry
 // regeneration can't wipe them — these controls never had inline on*="" handlers).
 evOn('h180', function (event) { savePdfProxyOptIn(); });   // P5 — full-text PDF proxy consent toggle
+evOn('h188', function (event) { switchWbTab('wos'); });    // workbench Web of Science tab
+evOn('h189', function (event) { copyPaywalledStrategy('wos'); });   // Build tab — copy WoS strategy
+evOn('h190', function (event) { runPressReview(); });      // Build tab — PRESS peer review of the strategy
 
 // ── Handlers that closed over runtime data (hand-written) ─────────────────────
 //
@@ -20281,7 +21132,7 @@ var EV_CALLABLE_DYNAMIC = [
   'updateChecklistItem', 'updateProjClItem', 'updateRobDomainJudgement', 'updateProjClDomain',
   'updateGradeDomain', 'updateGradeUpgrade', 'updateGradeField'
 ];
-var EV_CALLABLE_LITERALS = /*@@EV_CALLABLE_NAMES@@*/["acceptSuggestion","addAllForDb","addAllProjScannedRefs","addBuildTerm","addProjScannedRef","addToExistingProject","analyseProjScannedRef","analyseRefPaper","analyseSinglePaper","applyAllBuildSuggestions","applyBuildSuggestion","applyMeshSuggestion","changeChecklist","checkAlertForNew","drawerRemoveCriterion","evClickSuppFile","evEnterAddBuildTerm","evEnterRunWbGroup","evOpenExternal","evRankedCbChanged","evSetCritKeywords","evSetCritKeywordsSync","evSetCritLabelPrev","evSetCritLabelSync","evSetCritType","evSetCritTypeOnly","evSetWbQuery","evSuppDrop","evSuppFile","exportUploaderCSV","fillBlockSynonymsFromMesh","findProjPaperPdf","homeRemoveCriterion","insertSetRef","loadCitedBy","loadRelated","openAddToProjModal","openProjDetail","prefillWb","projRefsToggle","reRunAgentWithSupp","removeBuildBlock","removeBuildTerm","removeCriterion","removeGradeOutcome","removePaperFromProject","removeProjExtractionField","removePubmedSet","removeSuppFile","renameBuildBlock","rerunSearch","resolveDupPair","retryRefResolve","runProjPaperAgent","runWbGroup","scanProjPaperRefs","setActiveReviewer","setBuildBlockRole","setProjChecklist","setProjClOverall","setProjPaperDecision","setProjPaperExclusionReason","setProjPaperReason","suggestSynonyms","toggleAlert","toggleBuildBlockSearch","toggleChecklist","toggleExpand","toggleProjPaperDetail","toggleSourceFilter","updateGradeField","updateNotes","updateProjExtraction","updateProjPaperNotes","updateProtocolField","updateRobDomainJudgement","updateUploaderDomainJudgement","updateUploaderItem"];   // build.js replaces [] with the scanned evAttr targets
+var EV_CALLABLE_LITERALS = /*@@EV_CALLABLE_NAMES@@*/["acceptSuggestion","addAllForDb","addAllProjScannedRefs","addBuildTerm","addProjScannedRef","addToExistingProject","analyseProjScannedRef","analyseRefPaper","analyseSinglePaper","applyAllBuildSuggestions","applyBuildSuggestion","applyMeshSuggestion","changeChecklist","checkAlertForNew","copyWosWbStrategy","drawerRemoveCriterion","evClickSuppFile","evEnterAddBuildTerm","evEnterRunWbGroup","evOpenExternal","evRankedCbChanged","evSetCritKeywords","evSetCritKeywordsSync","evSetCritLabelPrev","evSetCritLabelSync","evSetCritType","evSetCritTypeOnly","evSetWbQuery","evSuppDrop","evSuppFile","exportUploaderCSV","fillBlockSynonymsFromMesh","findProjPaperPdf","homeRemoveCriterion","importWosPoolRecords","insertSetRef","loadCitedBy","loadRelated","openAddToProjModal","openProjDetail","prefillWb","projRefsToggle","reRunAgentWithSupp","removeBuildBlock","removeBuildTerm","removeCriterion","removeGradeOutcome","removePaperFromProject","removeProjExtractionField","removePubmedSet","removeSuppFile","renameBuildBlock","rerunSearch","resolveDupPair","retryRefResolve","runProjPaperAgent","runWbGroup","savePressSignoff","scanProjPaperRefs","setActiveReviewer","setBuildBlockRole","setProjChecklist","setProjClOverall","setProjPaperDecision","setProjPaperExclusionReason","setProjPaperReason","suggestSynonyms","toggleAlert","toggleBuildBlockSearch","toggleChecklist","toggleExpand","toggleProjPaperDetail","toggleSourceFilter","updateGradeField","updateNotes","updateProjExtraction","updateProjPaperNotes","updateProtocolField","updateRobDomainJudgement","updateUploaderDomainJudgement","updateUploaderItem"];   // build.js replaces [] with the scanned evAttr targets
 EV_CALLABLE_LITERALS.concat(EV_CALLABLE_DYNAMIC).forEach(function (name) {
   const f = (typeof window !== 'undefined') ? window[name] : undefined;
   if (typeof f === 'function') EV_CALLABLE[name] = f;
