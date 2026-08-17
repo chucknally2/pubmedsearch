@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-uDIy6CJ5NLNcVDY6dxsf5PsMFX36YBzeT7xDQDDXTqw='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-d5inSk5DKuyjAim996ChkouvhQBtZN7PTp9tJH5CkRc='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -12965,6 +12965,11 @@ function evNormaliseScannedRef(r) {
   out.agentKeyFinding = evClampStr(r.agentKeyFinding, 2000);
   out.agentSampleSize = evNumOr(r.agentSampleSize, 0, 1e9, null);
   out.agentPopulation = evClampStr(r.agentPopulation, 1000);
+  out.agentTextSource = evClampStr(r.agentTextSource, 200);
+  out.agentModel = evClampStr(r.agentModel, 200);
+  out.agentProvider = evClampStr(r.agentProvider, 40);
+  out.agentPromptVersion = evClampStr(r.agentPromptVersion, 20);
+  out.agentAnalysedAt = evIsoTimestamp(r.agentAnalysedAt);
   return out;   // agentBusy and any unknown field are intentionally NOT carried
 }
 // A restored project paper, rebuilt field-by-field from an allowlist. Anything not
@@ -13021,6 +13026,10 @@ function evNormalisePaper(p) {
   out.agentPopulation = evClampStr(p.agentPopulation, 1000);
   out.agentScoreReasoning = evClampStr(p.agentScoreReasoning, 2000);
   out.agentTextSource = evClampStr(p.agentTextSource, 200);
+  out.agentModel = evClampStr(p.agentModel, 200);
+  out.agentProvider = evClampStr(p.agentProvider, 40);
+  out.agentPromptVersion = evClampStr(p.agentPromptVersion, 20);
+  out.agentAnalysedAt = evIsoTimestamp(p.agentAnalysedAt);
   out.queryMatchReasoning = evClampStr(p.queryMatchReasoning, 2000);
   // Quick relevance screen (tier-2 Ranked Results): verdict enum fails closed
   // to null (= not screened), score clamps 0–100, reason clamps.
@@ -13541,6 +13550,13 @@ function serialisePaper(p, source) {
     agentKeyFinding:     p.agentKeyFinding || '',
     agentSampleSize:     p.agentSampleSize || null,
     agentPopulation:     p.agentPopulation || '',
+    agentTextSource:     p.agentTextSource || '',
+    // Appraisal provenance — stamped by applyAgentResults; the validation
+    // harness reports these, so they must survive into project storage.
+    agentModel:          p.agentModel || '',
+    agentProvider:       p.agentProvider || '',
+    agentPromptVersion:  p.agentPromptVersion || '',
+    agentAnalysedAt:     p.agentAnalysedAt || '',
     queryMatch:          p.queryMatch || null,
     queryMatchReasoning: p.queryMatchReasoning || '',
     relVerdict:          p.relVerdict || null,   // quick relevance screen (tier 2)
@@ -13732,7 +13748,10 @@ function projScannedRefToPaperObj(ref) {
     biasToolUsed: ref.biasToolUsed || ref.bias_checklist || null, bias_risk: ref.bias_risk || null,
     agentAnalysed: ref.agentAnalysed || false, agentSummary: ref.agentSummary || '',
     agentKeyFinding: ref.agentKeyFinding || '', agentSampleSize: ref.agentSampleSize || null,
-    agentPopulation: ref.agentPopulation || ''
+    agentPopulation: ref.agentPopulation || '',
+    agentTextSource: ref.agentTextSource || '', agentModel: ref.agentModel || '',
+    agentProvider: ref.agentProvider || '', agentPromptVersion: ref.agentPromptVersion || '',
+    agentAnalysedAt: ref.agentAnalysedAt || ''
   };
 }
 
@@ -16367,6 +16386,12 @@ function projCopyAgentResults(p, shim, haveFull) {
   p.retractionInfo   = shim.retractionInfo || p.retractionInfo;
   p.retractionChecked = shim.retractionChecked || p.retractionChecked;
   p.appraisalDepth   = haveFull ? 'full-text' : 'abstract';   // record what it read
+  p.agentTextSource  = shim.agentTextSource || p.agentTextSource || '';
+  // Provenance stamps travel with the appraisal they describe.
+  p.agentModel         = shim.agentModel || p.agentModel || '';
+  p.agentProvider      = shim.agentProvider || p.agentProvider || '';
+  p.agentPromptVersion = shim.agentPromptVersion || p.agentPromptVersion || '';
+  p.agentAnalysedAt    = shim.agentAnalysedAt || p.agentAnalysedAt || '';
   if (shim.extraction)   p.extraction   = shim.extraction;    // merged (existing + AI pre-fill)
   if (shim.extractionAi) p.extractionAi = shim.extractionAi;
   delete p.fullText;   // don't persist the bulky article text into localStorage (re-fetchable)
@@ -18344,6 +18369,9 @@ async function _analyseOneWithAgentInner(p, questionOverride) {
       _assessApplyingFromCache = true;
       try { applyAgentResults(p, _r, '', (_cached.textSourceClass === 'abstract' ? 'abstract' : 'full text') + ' · from memory'); }
       finally { _assessApplyingFromCache = false; }
+      // The cache key pins model + prompt version, so those stamps are correct;
+      // the DATE must be when the appraisal was actually produced, not today.
+      if (_cached.savedAt) p.agentAnalysedAt = _cached.savedAt;
       p.fromCache = true;
       return;
     }
@@ -18884,6 +18912,14 @@ function applyAgentResults(p, result, fullText, textSource) {
   p.scanDepth = 'agent';
   p.agentAnalysed = true;
   p.agentTextSource = textSource;
+  // Provenance stamp — which model produced this appraisal, under which prompt
+  // version, and when. The validation harness and its methods text read THESE,
+  // never the model currently selected in Settings (which may have changed
+  // since — the sequential-replication methodology switches models on purpose).
+  p.agentModel = (typeof activeModel === 'function' && activeModel()) || '';
+  p.agentProvider = (typeof aiProvider === 'string' && aiProvider) || '';
+  p.agentPromptVersion = (typeof ASSESS_PROMPT_VERSION === 'string' && ASSESS_PROMPT_VERSION) || '';
+  p.agentAnalysedAt = new Date().toISOString();
   p.agentSummary = result.summary || '';
   p.agentKeyFinding = result.key_finding || '';
   if (result.sample_size) p.agentSampleSize = result.sample_size;
@@ -20497,6 +20533,21 @@ function evValRefFromCsv(text, toolKey) {
   return { rows: rows, kept: kept, skipped: skipped };
 }
 
+// Appraisal provenance, read from the stamps applyAgentResults writes at
+// appraisal time — never from the model currently selected in Settings.
+function evValModelLabel(p) {
+  if (!p || !p.agentModel) return '';
+  return p.agentModel + (p.agentProvider ? ' (' + p.agentProvider + ')' : '');
+}
+// full text vs abstract-only: prefer the explicit text-source label, fall back
+// to the copy-back's appraisalDepth; legacy appraisals may have neither.
+function evValTextSourceClass(p) {
+  const src = String((p && p.agentTextSource) || '');
+  if (src) return /abstract/i.test(src) ? 'abstract' : 'fulltext';
+  const d = (p && p.appraisalDepth) || '';
+  return d === 'full-text' ? 'fulltext' : d === 'abstract' ? 'abstract' : 'unknown';
+}
+
 // The report: per-domain (and overall) agreement between reference and AI.
 // Pairs where either side is 'unclear' are excluded from κ (they are not a
 // judgement on the same scale) but counted so the exclusion is visible.
@@ -20504,10 +20555,22 @@ function evValComputeReport(papersArr, refRows, toolKey) {
   const tool = EVVAL_TOOLS[toolKey];
   const units = tool.domains.concat([{ id: 'overall', col: 'overall', label: 'Overall' }]);
   const matched = [];
+  const provenance = { models: {}, textSources: { fulltext: 0, abstract: 0, unknown: 0 }, promptVersions: {}, unstamped: 0, analysedFrom: '', analysedTo: '' };
   papersArr.forEach(function(p) {
     const ai = evValAiJudgements(p, toolKey);
     const ref = refRows[String(p.pmid)];
-    if (ai && ref) matched.push({ pmid: String(p.pmid), title: p.title || '', ai: ai, ref: ref });
+    if (!ai || !ref) return;
+    matched.push({ pmid: String(p.pmid), title: p.title || '', ai: ai, ref: ref });
+    const label = evValModelLabel(p);
+    if (label) provenance.models[label] = (provenance.models[label] || 0) + 1;
+    else provenance.unstamped++;
+    provenance.textSources[evValTextSourceClass(p)]++;
+    if (p.agentPromptVersion) provenance.promptVersions[p.agentPromptVersion] = (provenance.promptVersions[p.agentPromptVersion] || 0) + 1;
+    const at = p.agentAnalysedAt || '';   // ISO strings — lexical compare is chronological
+    if (at) {
+      if (!provenance.analysedFrom || at < provenance.analysedFrom) provenance.analysedFrom = at;
+      if (!provenance.analysedTo || at > provenance.analysedTo) provenance.analysedTo = at;
+    }
   });
   const pooledPairs = [], disagreements = [];
   const domains = units.map(function(u) {
@@ -20533,7 +20596,8 @@ function evValComputeReport(papersArr, refRows, toolKey) {
               agreePct: pooledKap ? pooledKap.agreePct : null,
               kappa: pooledKap ? pooledKap.kappa : null,
               wkappa: pooledWk ? pooledWk.kappa : null },
-    disagreements: disagreements
+    disagreements: disagreements,
+    provenance: provenance
   };
 }
 
@@ -20555,7 +20619,35 @@ function evValResultsCsvText(report) {
   report.disagreements.forEach(function(d) {
     lines.push([csvCell(d.pmid), csvCell(d.title), csvCell(d.domain), d.ref, d.ai].join(','));
   });
+  const prov = report.provenance;
+  if (prov) {
+    lines.push('');
+    lines.push('provenance');
+    lines.push('model,n_papers');
+    Object.keys(prov.models).forEach(function(mn) { lines.push([csvCell(mn), prov.models[mn]].join(',')); });
+    if (prov.unstamped) lines.push([csvCell('(unrecorded — appraisal predates model stamping)'), prov.unstamped].join(','));
+    lines.push('text_source_fulltext,' + prov.textSources.fulltext);
+    lines.push('text_source_abstract_only,' + prov.textSources.abstract);
+    if (prov.textSources.unknown) lines.push('text_source_unrecorded,' + prov.textSources.unknown);
+    Object.keys(prov.promptVersions).forEach(function(pv) { lines.push([csvCell('prompt_version_' + pv), prov.promptVersions[pv]].join(',')); });
+    if (prov.analysedFrom) lines.push('analysed_from,' + prov.analysedFrom.slice(0, 10));
+    if (prov.analysedTo) lines.push('analysed_to,' + prov.analysedTo.slice(0, 10));
+  }
   return lines.join('\n');
+}
+
+// Model attribution for the methods paragraph: the per-paper stamps when any
+// exist (the honest answer, even if Settings has since changed), else the
+// caller's fallback for appraisals that predate provenance stamping.
+function evValModelPhrase(report, fallbackModel) {
+  const prov = report.provenance;
+  const names = prov ? Object.keys(prov.models) : [];
+  if (!names.length) return fallbackModel || '';
+  names.sort(function(a, b) { return prov.models[b] - prov.models[a]; });
+  let s = names.length === 1 ? names[0]
+    : names.map(function(nm) { return nm + ' [n=' + prov.models[nm] + ']'; }).join('; ');
+  if (prov.unstamped) s += '; ' + prov.unstamped + ' appraisal(s) of unrecorded model';
+  return s;
 }
 
 function evValMethodsText(report, modelName) {
@@ -20564,14 +20656,24 @@ function evValMethodsText(report, modelName) {
   const ag = report.pooled.agreePct === null ? 'n/a' : report.pooled.agreePct + '%';
   const ov = report.domains[report.domains.length - 1];
   const ovK = ov.kappa === null ? 'n/a' : (Math.round(ov.kappa * 100) / 100).toFixed(2);
-  return 'AI-assisted ' + report.toolLabel + ' judgements' + (modelName ? ' (' + modelName + ')' : '') +
+  const modelPhrase = evValModelPhrase(report, modelName);
+  const prov = report.provenance;
+  let srcSentence = '';
+  if (prov && (prov.textSources.fulltext || prov.textSources.abstract)) {
+    const bits = [];
+    if (prov.textSources.fulltext) bits.push('the full text for ' + prov.textSources.fulltext);
+    if (prov.textSources.abstract) bits.push('the abstract alone for ' + prov.textSources.abstract);
+    srcSentence = ' AI judgements were made from ' + bits.join(' and ') + ' of the ' + report.nPapers + ' studies' +
+      (prov.textSources.unknown ? ' (text source unrecorded for ' + prov.textSources.unknown + ')' : '') + '.';
+  }
+  return 'AI-assisted ' + report.toolLabel + ' judgements' + (modelPhrase ? ' (' + modelPhrase + ')' : '') +
     ' were compared with the reference (human consensus) judgements for ' + report.nPapers +
     ' studies. Across ' + (report.domains.length - 1) + ' domains (' + report.pooled.n +
     ' paired judgements), raw agreement was ' + ag + ' with Cohen’s κ = ' + k +
     ' and linearly weighted κ = ' + wk + '. Agreement on the overall judgement was κ = ' + ovK +
     ' (n = ' + ov.n + '). Judgements of “unclear” on either side were excluded from agreement statistics.' +
     ' κ was computed with rater-specific marginals; weighted κ used linear weights over the ordered ' +
-    report.toolLabel + ' scale.';
+    report.toolLabel + ' scale.' + srcSentence;
 }
 
 // ── Validation UI ────────────────────────────────────────────────────────────
@@ -20644,8 +20746,10 @@ function evValDownloadResults() {
 function evValCopyMethods() {
   const report = evValCurrentReport();
   if (!report) return;
-  const model = (typeof getActiveModelLabel === 'function' ? getActiveModelLabel() : '') || '';
-  navigator.clipboard.writeText(evValMethodsText(report, model)).then(function() {
+  // Fallback only — evValMethodsText prefers the per-paper model stamps; the
+  // Settings model may have changed since the appraisals actually ran.
+  const fallback = (typeof activeModel === 'function' ? activeModel() : '') || '';
+  navigator.clipboard.writeText(evValMethodsText(report, fallback)).then(function() {
     showToast('Methods text copied', '#22c55e');
   });
 }
@@ -20670,6 +20774,15 @@ function evValRender() {
     '</div>';
   const report = ref ? evValComputeReport(projectPapers[proj.id] || [], ref.rows, toolKey) : null;
   if (report && report.nPapers) {
+    const prov = report.provenance;
+    const provNames = Object.keys(prov.models);
+    const ts = prov.textSources;
+    const provBits = [];
+    if (provNames.length) provBits.push('Model: ' + provNames.map(function(nm) { return esc(nm) + (provNames.length > 1 ? ' (n=' + prov.models[nm] + ')' : ''); }).join(', '));
+    if (ts.fulltext || ts.abstract || ts.unknown) provBits.push('Text: ' + ts.fulltext + ' full text · ' + ts.abstract + ' abstract-only' + (ts.unknown ? ' · ' + ts.unknown + ' unrecorded' : ''));
+    if (provBits.length) html += '<div style="font-size:11px;color:#94a3b8;margin-bottom:6px">' + provBits.join(' · ') + '</div>';
+    if (provNames.length > 1) html += '<div style="font-size:11px;color:#f59e0b;margin-bottom:6px">&#9888; Mixed models — these statistics pool judgements from ' + provNames.length + ' different models. Re-analyse so one model appraised every paper before reporting.</div>';
+    if (prov.unstamped) html += '<div style="font-size:11px;color:#f59e0b;margin-bottom:6px">&#9888; ' + prov.unstamped + ' appraisal(s) predate model stamping — re-analyse them to record which model produced the judgements.</div>';
     html += '<table style="width:100%;border-collapse:collapse;font-size:11px;margin-bottom:10px">' +
       '<tr style="color:#748399;text-align:left"><th style="padding:4px 8px">Unit</th><th>n</th><th>Raw %</th><th>κ</th><th>Weighted κ</th><th>Excl. unclear</th></tr>' +
       report.domains.map(function(d) {
