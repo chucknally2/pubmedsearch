@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-d5inSk5DKuyjAim996ChkouvhQBtZN7PTp9tJH5CkRc='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-cMwLtiWjhzC0mwkUW7dYmXvngrrDyc65Las9vT5rhAI='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -1112,19 +1112,19 @@ button:not(:disabled):active { filter: brightness(0.95); }
       <div class="grid2">
         <div>
           <label class="pico-lbl" for="pico-p" style="color:var(--ev-danger-text)">P &mdash; Population / Problem</label>
-          <textarea id="pico-p" aria-label="PICO — Population" rows="2" placeholder="e.g. adult patients undergoing major non-cardiac surgery" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
+          <textarea id="pico-p" data-evchange="h191" aria-label="PICO — Population" rows="2" placeholder="e.g. adult patients undergoing major non-cardiac surgery" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
         </div>
         <div>
           <label class="pico-lbl" for="pico-i" style="color:var(--ev-link-3)">I &mdash; Intervention / Exposure</label>
-          <textarea id="pico-i" aria-label="PICO — Intervention or exposure" rows="2" placeholder="e.g. non-steroidal anti-inflammatory drugs (NSAIDs)" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
+          <textarea id="pico-i" data-evchange="h191" aria-label="PICO — Intervention or exposure" rows="2" placeholder="e.g. non-steroidal anti-inflammatory drugs (NSAIDs)" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
         </div>
         <div>
           <label class="pico-lbl" for="pico-c" style="color:var(--ev-warn-text)">C &mdash; Comparison <span style="opacity:0.6;font-weight:400">(optional)</span></label>
-          <textarea id="pico-c" aria-label="PICO — Comparator" rows="2" placeholder="e.g. opioid analgesia or placebo" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
+          <textarea id="pico-c" data-evchange="h191" aria-label="PICO — Comparator" rows="2" placeholder="e.g. opioid analgesia or placebo" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
         </div>
         <div>
           <label class="pico-lbl" for="pico-o" style="color:var(--ev-ok-text)">O &mdash; Outcome</label>
-          <textarea id="pico-o" aria-label="PICO — Outcome" rows="2" placeholder="e.g. postoperative delirium incidence" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
+          <textarea id="pico-o" data-evchange="h191" aria-label="PICO — Outcome" rows="2" placeholder="e.g. postoperative delirium incidence" style="width:100%;box-sizing:border-box;padding:9px 11px;font-size:13px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical"></textarea>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:12px;margin-top:11px;flex-wrap:wrap">
@@ -7417,7 +7417,7 @@ function addAllForDb(id) {
 function recomputePool() {
   const order = ['pubmed','cochrane','europepmc','semantic','openalex','scopus','clinicaltrials'];
   const arrays = order.map(function(id){ return (poolSlices[id] && poolSlices[id].results) || []; });
-  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0);
+  const rawTotal = arrays.reduce(function(s, a){ return s + a.length; }, 0) + importedRecords.length;
   poolMerged = deduplicatePapers(
     arrays[order.indexOf('pubmed')],
     arrays[order.indexOf('cochrane')],
@@ -7425,7 +7425,11 @@ function recomputePool() {
     arrays[order.indexOf('semantic')],
     arrays[order.indexOf('openalex')],
     arrays[order.indexOf('scopus')],
-    arrays[order.indexOf('clinicaltrials')]
+    arrays[order.indexOf('clinicaltrials')],
+    // Imported exports (WoS/Ovid Embase/CENTRAL) ride the same merged-last
+    // position as the search-tab fan-out, so they survive a pool re-screen
+    // instead of being silently dropped when poolMerged is rebuilt.
+    importedRecords
   );
   const dupes = rawTotal - poolMerged.length;
   const searchCount = Object.keys(poolSlices).length;
@@ -7732,12 +7736,15 @@ function centralStrategyText(blocks, pico) {
 // generated), so subject headings are translated to topic phrases: the heading
 // text, de-inverted to natural word order ("Diabetes Mellitus, Type 2" → "Type 2
 // Diabetes Mellitus"), searched as free text in TS=. PubMed *-truncation is valid
-// WoS truncation unchanged; multi-word free text is quoted (exact phrase) unless
-// truncated, mirroring centralTermStr.
+// WoS truncation unchanged; ALL multi-word free text is quoted (exact phrase),
+// truncated or not — unlike the Ovid/CENTRAL target, WoS accepts wildcards
+// inside quotation marks, and an unquoted multi-word term is combined with an
+// implied operator rather than searched as the adjacent phrase, silently
+// broadening the set beyond the PubMed strategy it claims to mirror.
 function wosTermStr(t) {
   let term = (t.term || '').trim();
   if (t.field === 'mesh' || t.field === 'pt') term = deinvertMeshHeading(term.replace(/\*$/, ''));
-  if (/\s/.test(term) && term.indexOf('*') === -1) term = '"' + term + '"';
+  if (/\s/.test(term)) term = '"' + term + '"';
   return term;
 }
 
@@ -8110,22 +8117,36 @@ function screenPool() {
   Object.keys(poolSlices).forEach(function(id){
     perSourceQueries[WB_META[id].label] = poolSlices[id].query;
   });
+  // Imported exports are part of the pool merge, so PRISMA must count them:
+  // identified = Σ per-source (AUDIT identity) breaks if they merge silently.
+  const importedBySource = {};
+  importedRecords.forEach(function(r){ const lbl = r.source || 'Imported'; importedBySource[lbl] = (importedBySource[lbl] || 0) + 1; });
+  Object.keys(importedBySource).forEach(function(lbl){
+    if (!perSourceQueries[lbl]) perSourceQueries[lbl] = '(imported ' + lbl + ' export — strategy run externally)';
+  });
   // Per-stream identified counts for the PRISMA panel (MeSH primary vs keyword
   // secondary) — the panel reads prov.primaryRaw / prov.secondaryRaw, so the pool
   // path must populate them too or the "Identified" line shows "undefined".
   function sumSliceCounts(ids){ return ids.reduce(function(s,id){ return s + ((poolSlices[id] && poolSlices[id].count) || 0); }, 0); }
   const poolPrimaryRaw   = sumSliceCounts(['pubmed','europepmc','cochrane']);
   const poolSecondaryRaw = sumSliceCounts(['semantic','openalex','scopus','clinicaltrials']);
+  const poolIdentified = Object.keys(poolSlices).reduce(function(s,id){ return s + poolSlices[id].count; }, 0) + importedRecords.length;
   lastSearchProvenance = {
     primaryQuery: (poolSlices.pubmed && poolSlices.pubmed.query) || '',
     secondaryQuery: '',
     perSourceQueries: perSourceQueries,
     primaryRaw: poolPrimaryRaw,
     secondaryRaw: poolSecondaryRaw,
-    totalIdentified: Object.keys(poolSlices).reduce(function(s,id){ return s + poolSlices[id].count; }, 0),
-    duplicatesRemoved: Object.keys(poolSlices).reduce(function(s,id){ return s + poolSlices[id].count; }, 0) - poolMerged.length,
+    importedRaw: importedRecords.length,
+    totalIdentified: poolIdentified,
+    duplicatesRemoved: poolIdentified - poolMerged.length,
     uniqueRecords: poolMerged.length,
-    perSource: (function(){ const o={}; Object.keys(poolSlices).forEach(function(id){ o[WB_META[id].label] = poolSlices[id].count; }); return o; })(),
+    perSource: (function(){
+      const o={};
+      Object.keys(poolSlices).forEach(function(id){ o[WB_META[id].label] = poolSlices[id].count; });
+      Object.keys(importedBySource).forEach(function(lbl){ o[lbl] = (o[lbl] || 0) + importedBySource[lbl]; });
+      return o;
+    })(),
     searchedAt: new Date().toISOString(),
     dateFrom: wbDateFrom(), dateTo: wbDateTo(),
     design: (picoInputs().design || '')   // native filter for OpenAlex/S2 is applied at fetch, not in their string
@@ -8922,37 +8943,47 @@ var PRESS_CITATION = 'McGowan J, Sampson M, Salzwedel DM, Cogo E, Foerster V, Le
 // suffix-anchored -ise/-ize and -our/-or rule, each with a stop set — a WRONG
 // suggestion in a peer-review tool costs more than a missed one. Pure.
 var PRESS_SPELL_STEMS = [
-  ['haem', 'hem'], ['anaesthe', 'anesthe'], ['anaesthet', 'anesthet'], ['paediatr', 'pediatr'],
+  // haem/anaem/faec are guarded by their continuation vowel: bare 'hem'/'anem'/
+  // 'fec' prefixes also match invariant words (hemisphere, hemiplegia, anemone,
+  // anemometer, fecund), which must never be "corrected".
+  ['haemo', 'hemo'], ['haema', 'hema'], ['anaesthe', 'anesthe'], ['paediatr', 'pediatr'],
   ['orthopaed', 'orthoped'], ['oesophag', 'esophag'], ['oedema', 'edema'], ['foetal', 'fetal'],
-  ['diarrhoea', 'diarrhea'], ['coeliac', 'celiac'], ['leukaem', 'leukem'], ['anaem', 'anem'],
-  ['gynaec', 'gynec'], ['caesar', 'cesar'], ['faec', 'fec'], ['oestrogen', 'estrogen'],
+  ['diarrhoea', 'diarrhea'], ['coeliac', 'celiac'], ['leukaem', 'leukem'], ['anaemi', 'anemi'],
+  ['gynaec', 'gynec'], ['caesar', 'cesar'], ['faeca', 'feca'], ['faece', 'fece'],
+  ['oestrogen', 'estrogen'],
   ['aetiolog', 'etiolog'], ['paralys', 'paralyz'], ['catheteris', 'catheteriz'],
-  ['manoeuvr', 'maneuver'], ['orthopaedic', 'orthopedic'], ['dyspnoea', 'dyspnea'],
+  ['manoeuvr', 'maneuver'], ['dyspnoea', 'dyspnea'],
   ['apnoea', 'apnea'], ['ischaem', 'ischem'], ['analys', 'analyz'], ['tumour', 'tumor']
 ];
 // Bases where -ise/-ize is not a dialect alternation (exercise, compromise …).
+// Keys are what the regex CAPTURES — the base with the -is/-iz stripped
+// ('precise' captures 'prec', not 'precis').
 var PRESS_ISE_STOP = { exerc:1, comprom:1, compr:1, surpr:1, prem:1, dem:1, desp:1, disgu:1,
   improv:1, merchand:1, parad:1, enterpr:1, franch:1, expert:1, superv:1, advert:1, otherw:1,
-  precis:1, conc:1, dev:1 };
+  prec:1, conc:1, dev:1 };
 // Words ending -our that are not the British spelling of an -or word.
 var PRESS_OUR_STOP = { contour:1, detour:1, velour:1, glamour:1 };
 
-function pressWordVariant(w) {
+function pressWordVariant(w, truncated) {
   w = String(w || '').toLowerCase();
   if (!w) return null;
   let m;
   for (let i = 0; i < PRESS_SPELL_STEMS.length; i++) {
     const uk = PRESS_SPELL_STEMS[i][0], us = PRESS_SPELL_STEMS[i][1];
-    if (w.indexOf(uk) === 0) return us + w.slice(uk.length);
-    if (w.indexOf(us) === 0) return uk + w.slice(us.length);
+    // Greek -sis nouns (analysis, paralysis) share a stem with the -yse/-yze
+    // verbs but are invariant across dialects — never rewrite them.
+    if (w.indexOf(uk) === 0 && w.slice(uk.length, uk.length + 2) !== 'is') return us + w.slice(uk.length);
+    if (w.indexOf(us) === 0 && w.slice(us.length, us.length + 2) !== 'is') return uk + w.slice(us.length);
   }
   // -ize / -ise family: randomised ⇄ randomized, randomisation ⇄ randomization
   if ((m = w.match(/^(.{4,}?)(iz|is)(e|ed|es|ing|ation|ations)$/)) && !PRESS_ISE_STOP[m[1]]) {
     return m[1] + (m[2] === 'iz' ? 'is' : 'iz') + m[3];
   }
   // A truncated stem carries the same alternation with the suffix cut off
-  // (randomis* ⇄ randomiz*) — the caller has already stripped the wildcard.
-  if ((m = w.match(/^(.{4,}?)(iz|is)$/)) && !PRESS_ISE_STOP[m[1]]) {
+  // (randomis* ⇄ randomiz*) — but ONLY on a genuinely truncated term: on a
+  // full word a bare -is ending is a Greek noun (sepsis, arthritis, diagnosis),
+  // not a dialect marker.
+  if (truncated && (m = w.match(/^(.{4,}?)(iz|is)$/)) && !PRESS_ISE_STOP[m[1]]) {
     return m[1] + (m[2] === 'iz' ? 'is' : 'iz');
   }
   // -our ⇄ -or: tumour/tumor, behaviour/behavior
@@ -8970,7 +9001,8 @@ function pressSpellingVariant(raw) {
   const words = term.replace(/[*?]+$/, '').toLowerCase().split(/\s+/);
   for (let i = 0; i < words.length; i++) {
     if (words[i].length < 5) continue;                 // too short to carry a reliable marker
-    const v = pressWordVariant(words[i]);
+    // Only the last word carried the wildcard, so only it counts as truncated.
+    const v = pressWordVariant(words[i], !!trunc && i === words.length - 1);
     if (v && v !== words[i]) { const copy = words.slice(); copy[i] = v; return copy.join(' ') + trunc; }
   }
   return null;
@@ -9004,8 +9036,12 @@ function pressReview(blocks, pico, opts) {
       const stated = String(p[pr[0]] || '').trim();
       if (!stated) return;
       const omittedHere = omitted.some(function(b){ return (b.role || 'other') === pr[1]; });
-      if (roleBlocks(pr[1]).length) f1.push(pressFinding('pass', pr[2] + ' concept from the PICO is represented in the search.'));
-      else if (omittedHere) f1.push(pressFinding('info', pr[2] + ' concept exists but is deliberately not searched.',
+      // An outcome block only enters the assembled query when the "search
+      // outcome" toggle is on (conceptGroupsWith drops the role otherwise) —
+      // the block's existence alone must not earn a "represented" pass.
+      const enteredQuery = roleBlocks(pr[1]).length && (pr[1] !== 'outcome' || !!p.searchOutcome);
+      if (enteredQuery) f1.push(pressFinding('pass', pr[2] + ' concept from the PICO is represented in the search.'));
+      else if (omittedHere || roleBlocks(pr[1]).length) f1.push(pressFinding('info', pr[2] + ' concept exists but is deliberately not searched.',
         pr[1] === 'outcome'
           ? 'Standard Cochrane practice for effectiveness questions — outcomes are screened for, not searched, because they are reported too inconsistently. Confirm it is deliberate and record the reason in the protocol.'
           : 'Confirm this is deliberate and record the reason in the protocol.'));
@@ -9013,9 +9049,14 @@ function pressReview(blocks, pico, opts) {
         'Add a concept block for it, or amend the PICO so the search and the question agree.'));
     });
     const comparatorOmitted = omitted.some(function(b){ return (b.role || 'other') === 'comparator'; });
-    if (String(p.c || '').trim() && !roleBlocks('comparator').length && !comparatorOmitted) {
+    if (String(p.c || '').trim() && roleBlocks('comparator').length && p.comparatorLogic !== 'and') {
       f1.push(pressFinding('info', 'A comparator is stated in the PICO; it is merged into the intervention OR-set rather than searched as its own AND-ed concept.',
         'That is the recommended sensitive structure — confirm it matches your protocol.'));
+    } else if (String(p.c || '').trim() && !roleBlocks('comparator').length && !comparatorOmitted) {
+      // No comparator terms exist anywhere — nothing was "merged", so say so
+      // honestly rather than asserting the recommended structure is in place.
+      f1.push(pressFinding('info', 'A comparator is stated in the PICO ("' + String(p.c).trim().slice(0, 60) + '") but no concept block covers it.',
+        'Comparators are usually screened for rather than searched (searching them costs recall) — confirm the omission is deliberate, or add a comparator block merged into the intervention OR-set.'));
     }
     if (searched.length === 1) f1.push(pressFinding('warn', 'Only one concept is searched, so the strategy is unfocused and will retrieve a very large set.',
       'Most questions need at least a population AND an intervention concept.'));
@@ -9081,12 +9122,23 @@ function pressReview(blocks, pico, opts) {
   else if (searched.length) f4.push(pressFinding('pass', 'Every searched concept combines subject headings with free-text synonyms.'));
   const missingVariants = [];
   searched.forEach(function(b) {
-    const present = {};
-    (b.terms || []).forEach(function(t){ present[String(t.term || '').toLowerCase().replace(/[*?]+$/, '').trim()] = 1; });
+    const present = {}, presentStems = [];
+    (b.terms || []).forEach(function(t){
+      const raw = String(t.term || '').toLowerCase().trim();
+      const bare = raw.replace(/[*?]+$/, '').trim();
+      present[bare] = 1;
+      // A truncated sibling retrieves every continuation of its stem, so
+      // randomis* already covers "randomised" — that variant is not missing.
+      if (/[*?]$/.test(raw)) presentStems.push(bare);
+    });
+    function variantCovered(v) {
+      const bare = v.replace(/[*?]+$/, '');
+      return present[bare] || presentStems.some(function(s){ return bare.indexOf(s) === 0; });
+    }
     (b.terms || []).forEach(function(t) {
       if (t.field !== 'tiab') return;
       const v = pressSpellingVariant(t.term);
-      if (v && !present[v.replace(/[*?]+$/, '')]) missingVariants.push({ concept: b.concept || 'concept', term: t.term, variant: v });
+      if (v && !variantCovered(v)) missingVariants.push({ concept: b.concept || 'concept', term: t.term, variant: v });
     });
   });
   if (missingVariants.length) {
@@ -9305,21 +9357,38 @@ function renderPressPanel() {
   // record of WHO reviewed it and WHEN is the reportable output, not the checks.
   const proj = projects.find(function(p){ return p.id === currentProjectId; });
   const saved = (proj && proj.pressReview) || null;
+  // The panel re-renders on every Build-tab edit — typed-but-unsaved sign-off
+  // text must survive the rebuild, not reset to the saved (often empty) values.
+  const typedReviewer = ((document.getElementById('press-reviewer') || {}).value || '').trim();
+  const typedNotes = ((document.getElementById('press-notes') || {}).value || '');
   html += '<div style="border-top:1px solid var(--ev-border-soft);margin-top:6px;padding-top:11px">' +
     '<div style="font-size:12px;font-weight:600;color:var(--ev-text-2);margin-bottom:3px">Peer-reviewer sign-off</div>' +
     '<div style="font-size:11px;color:var(--ev-text-dim);line-height:1.5;margin-bottom:8px">PRESS is a review by a second person — ideally an information specialist. Record who reviewed the strategy and what changed; it is saved on the project and printed in the PRISMA-S search report.</div>' +
     '<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">' +
-      '<input id="press-reviewer" placeholder="reviewer name or role" value="' + esc(saved ? (saved.reviewer || '') : '') + '" style="flex:1;min-width:170px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body)" />' +
+      '<input id="press-reviewer" placeholder="reviewer name or role" value="' + esc(typedReviewer || (saved ? (saved.reviewer || '') : '')) + '" style="flex:1;min-width:170px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body)" />' +
       '<button ' + evAttr('click', 'savePressSignoff') + ' style="font-size:12px;padding:8px 14px;border-radius:6px;border:1px solid #16a34a55;background:var(--ev-ok-bg);color:var(--ev-ok-text);cursor:pointer;font-weight:600;white-space:nowrap">✓ Record sign-off</button>' +
     '</div>' +
-    '<textarea id="press-notes" rows="2" placeholder="changes made in response to the review (optional)" style="width:100%;box-sizing:border-box;margin-top:8px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical">' + esc(saved ? (saved.notes || '') : '') + '</textarea>';
+    '<textarea id="press-notes" rows="2" placeholder="changes made in response to the review (optional)" style="width:100%;box-sizing:border-box;margin-top:8px;font-size:12px;padding:8px 10px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-text-body);resize:vertical">' + esc(typedNotes || (saved ? (saved.notes || '') : '')) + '</textarea>';
   if (saved && saved.at) {
-    html += '<div style="font-size:11px;color:var(--ev-ok-text);margin-top:6px">✓ Reviewed by ' + esc(saved.reviewer || 'unnamed reviewer') + ' on ' + esc(String(saved.at).slice(0, 10)) +
-      ' — ' + esc(saved.verdict || '') + '</div>';
+    if (pressSignoffStale(saved)) {
+      html += '<div style="font-size:11px;color:var(--ev-warn-text);margin-top:6px">⚠ Signed off by ' + esc(saved.reviewer || 'unnamed reviewer') + ' on ' + esc(String(saved.at).slice(0, 10)) +
+        ', but the strategy has been edited since — re-run the review and record a fresh sign-off.</div>';
+    } else {
+      html += '<div style="font-size:11px;color:var(--ev-ok-text);margin-top:6px">✓ Reviewed by ' + esc(saved.reviewer || 'unnamed reviewer') + ' on ' + esc(String(saved.at).slice(0, 10)) +
+        ' — ' + esc(saved.verdict || '') + '</div>';
+    }
   }
   html += '<div style="font-size:10px;color:var(--ev-text-dim);margin-top:10px;line-height:1.5">' + esc(PRESS_CITATION) + '</div>';
   html += '</div>';
   box.innerHTML = html;
+}
+
+// A sign-off covers the strategy it fingerprinted; edits since make it stale.
+// Legacy sign-offs (pre-fingerprint) can't be checked and are shown as-is.
+function pressSignoffStale(saved) {
+  if (!saved || !saved.at || !saved.strategy) return false;
+  try { return typeof buildPubmedQuery === 'function' && buildPubmedQuery() !== saved.strategy; }
+  catch (e) { return false; }
 }
 
 // Persist the sign-off (and the verdict at the time of signing) onto the project,
@@ -9329,12 +9398,19 @@ function savePressSignoff() {
   const proj = ensureProtocolProject();
   const reviewer = ((document.getElementById('press-reviewer') || {}).value || '').trim();
   const notes = ((document.getElementById('press-notes') || {}).value || '').trim();
+  // Re-run against the strategy AS IT STANDS: the displayed review may predate a
+  // PICO edit (the P/I/C/O textareas have no re-render hook), and a sign-off
+  // must never persist a verdict the current strategy would not earn.
+  pressLastReview = pressReview(buildBlocks, picoInputs(), pressRunOptions());
   proj.pressReview = {
     at: new Date().toISOString(),
     reviewer: reviewer,
     notes: notes,
     verdict: pressVerdictText(pressLastReview),
     counts: pressSummary(pressLastReview),
+    // Fingerprint of the strategy the reviewer actually saw — later edits mark
+    // the sign-off stale here, in the methods text and in the PRISMA-S report.
+    strategy: (typeof buildPubmedQuery === 'function' ? buildPubmedQuery() : '') || '',
     guideline: PRESS_CITATION
   };
   saveProjects();
@@ -13111,6 +13187,7 @@ function evNormalisePressReview(pr) {
       fail: evNumOr(c.fail, 0, 1000, 0, true), warn: evNumOr(c.warn, 0, 1000, 0, true),
       info: evNumOr(c.info, 0, 1000, 0, true), pass: evNumOr(c.pass, 0, 1000, 0, true)
     },
+    strategy: evClampStr(pr.strategy, 20000),   // fingerprint of the strategy as signed off
     guideline: evClampStr(pr.guideline, 500)
   };
 }
@@ -14742,12 +14819,24 @@ function buildProjectSearchReportHtml(proj) {
   // sign-off exists on the project; when it doesn't, the report says so plainly
   // rather than staying silent, because "not peer reviewed" is itself reportable.
   const pr = proj && proj.pressReview;
+  // Fingerprint check: if the most recent executed PubMed strategy no longer
+  // contains the strategy as signed off, the report must say so — silence would
+  // assert peer review of a strategy the reviewer never saw.
+  let prStale = false;
+  if (pr && pr.at && pr.strategy) {
+    let lastQ = '';
+    for (let i = ev.length - 1; i >= 0 && !lastQ; i--) {
+      if (ev[i] && ev[i].queries && ev[i].queries['PubMed']) lastQ = String(ev[i].queries['PubMed']);
+    }
+    prStale = !!lastQ && lastQ.indexOf(pr.strategy) < 0;
+  }
   const pressSection = '<div class="sr-note"><b>Peer review of the search strategy (PRISMA-S item 5):</b> ' +
     (pr && pr.at
       ? 'the MEDLINE/PubMed strategy was peer reviewed against the PRESS 2015 Evidence-Based Checklist by ' +
         esc(pr.reviewer || 'an unnamed reviewer') + ' on ' + esc(String(pr.at).slice(0, 10)) +
         ' (' + esc(pr.verdict || '') + ')' +
         (pr.notes ? '. Changes made in response: ' + esc(pr.notes) : '') + '. ' +
+        (prStale ? '<b>Note:</b> the executed strategy differs from the strategy as signed off — the review predates later edits. ' : '') +
         esc(pr.guideline || '')
       : 'no PRESS peer review has been recorded for this search.') +
     '</div>';
@@ -15073,7 +15162,14 @@ function copyMethodsNarrative() {
   // omitting the sentence.
   const proj = projects.find(function(x){ return x.id === currentProjectId; });
   const pressRec = proj && proj.pressReview;
-  if (pressRec && pressRec.at) {
+  // The sign-off must plausibly cover THIS search: its strategy fingerprint has
+  // to appear in the executed PubMed query, or the sentence would claim peer
+  // review of a strategy the reviewer never saw (currentProjectId may point at
+  // an unrelated project). Legacy sign-offs without a fingerprint keep the old
+  // behaviour.
+  const execPubmed = String((p.perSourceQueries && p.perSourceQueries['PubMed']) || '');
+  if (pressRec && pressRec.at &&
+      (!pressRec.strategy || (execPubmed && execPubmed.indexOf(pressRec.strategy) >= 0))) {
     s.push('The MEDLINE/PubMed strategy was peer reviewed against the PRESS 2015 Evidence-Based Checklist' +
       (pressRec.reviewer ? ' by ' + pressRec.reviewer : '') + ' on ' + String(pressRec.at).slice(0, 10) + '.');
   }
@@ -16716,7 +16812,9 @@ function uploaderBiasBadgeHtml(p, ck) {
       const vals = Object.values(dj).map(function(v){ return (v + '').toLowerCase(); });
       if (vals.length) {
         const worst = ['critical','high','serious','some_concerns','moderate'].filter(function(l){ return vals.indexOf(l) >= 0; })[0];
-        oj = worst || 'low';
+        // Low ONLY when every domain is explicitly low — an 'unclear' (or any
+        // unranked value) must never default to a green Low-risk badge.
+        oj = worst || (vals.every(function(v){ return v === 'low'; }) ? 'low' : 'unclear');
       }
     }
     const colour = oj === 'low' ? '#22c55e'
@@ -16730,6 +16828,7 @@ function uploaderBiasBadgeHtml(p, ck) {
                 : oj === 'serious' ? '🟠 Serious risk overall'
                 : oj === 'moderate' ? '🟡 Moderate risk overall'
                 : oj === 'some_concerns' ? '🟡 Some concerns overall'
+                : oj === 'unclear' ? '❓ Unclear risk'
                 : '❓ Not yet assessed';
     return wrap(colour + '22', colour, '1px solid ' + colour + '44', label);
   }
@@ -16787,23 +16886,30 @@ function renderUploaderChecklistItems(p, ck) {
       });
       html += domainRationaleHtml(clData, domain.id);
       const dj = (clData['__domain_judgements__'] && clData['__domain_judgements__'][domain.id]) || 'unclear';
-      const djCls = dj==='low'?'low':dj==='high'?'high':dj==='some_concerns'?'some_concerns':'unclear';
+      // Tool-specific judgement scale — mirrors the main results-tab renderer:
+      // ROBINS-I V2 is low/moderate/serious/critical and QUADAS-2 low/high; the
+      // previous hardcoded RoB 2 list made a 'critical' silently display as Low.
+      const judgeScale = (cl.judgements || ['low','some_concerns','high']).concat(['unclear']);
+      const judgeLabelMap = Object.assign({ low:'🟢 Low risk', some_concerns:'🟡 Some concerns', high:'🔴 High risk', unclear:'❓ Unclear' }, cl.judgementLabels || {});
       html += '<div class="rob-judgement-row"><span class="rob-judgement-label">Judgement:</span>';
-      html += '<select class="rob-judgement-select rob-' + djCls + '" ' + evAttr('change', 'updateUploaderDomainJudgement', [p.pmid, ck, domain.id], ['self']) + '>';
-      ['low','some_concerns','high','unclear'].forEach(function(opt) {
-        const lbl = opt==='low'?'🟢 Low risk':opt==='some_concerns'?'🟡 Some concerns':opt==='high'?'🔴 High risk':'❓ Unclear';
-        html += '<option value="' + opt + '"' + (dj===opt?' selected':'') + '>' + lbl + '</option>';
+      html += '<select class="rob-judgement-select rob-' + (judgeScale.indexOf(dj) >= 0 ? dj : 'unclear') + '" ' + evAttr('change', 'updateUploaderDomainJudgement', [p.pmid, ck, domain.id], ['self']) + '>';
+      judgeScale.forEach(function(opt) {
+        html += '<option value="' + opt + '"' + (dj===opt?' selected':'') + '>' + (judgeLabelMap[opt] || opt) + '</option>';
       });
+      // A stored judgement outside this tool's scale (e.g. an imported
+      // 'some_concerns' on QUADAS-2) must stay visible, not masquerade as Low.
+      if (dj && judgeScale.indexOf(dj) < 0) html += '<option value="' + esc(dj) + '" selected>⚠ ' + esc(dj) + ' (off-scale)</option>';
       html += '</select></div>';
       // Consistency note — same as main results tab
       const domSugg = (suggestRob2Judgements(clData, skipped)[domain.id]) || {};
       html += buildRob2ConsistencyNote(dj, domSugg);
       html += '</div>';
     });
-    // Overall judgement
+    // Overall judgement — full vocabulary across all three domain tools, so the
+    // footer can never contradict the header badge (e.g. ROBINS-I 'serious').
     const oj = clData['__overall_judgement__'] || 'unclear';
-    const ojColor = oj==='low'?'#22c55e':oj==='high'?'#ef4444':oj==='some_concerns'?'#f59e0b':'var(--ev-text-muted)';
-    const ojLabel = oj==='low'?'🟢 Low risk':oj==='high'?'🔴 High risk':oj==='some_concerns'?'🟡 Some concerns':'❓ Not assessed';
+    const ojColor = oj==='low'?'#22c55e':(oj==='high'||oj==='critical')?'#ef4444':oj==='serious'?'#f97316':(oj==='some_concerns'||oj==='moderate')?'#f59e0b':'var(--ev-text-muted)';
+    const ojLabel = oj==='low'?'🟢 Low risk':oj==='high'?'🔴 High risk':oj==='critical'?'🔴 Critical risk':oj==='serious'?'🟠 Serious risk':oj==='moderate'?'🟡 Moderate risk':oj==='some_concerns'?'🟡 Some concerns':'❓ Not assessed';
     html += '<div class="rob-judgement-row" style="margin-top:8px;border-top:1px solid var(--ev-border);padding-top:8px">';
     html += '<span class="rob-judgement-label" style="font-weight:700;color:var(--ev-text)">Overall judgement:</span>';
     html += '<span style="font-weight:700;color:' + ojColor + ';font-size:13px">' + ojLabel + '</span>';
@@ -16989,6 +17095,11 @@ function exportUploaderCSV(ck) {
     const amr = amstarConfidenceRating(p);
     rows.push(['', 'OVERALL CONFIDENCE', 'Derived per Shea 2017 from critical-domain flaws', amr ? amr.label : 'Not yet rated', '']);
     if (amr) rows.push(['', 'CRITICAL FLAWS', 'Critical-domain items answered "No"', String(amr.criticalFlaws), 'non-critical weaknesses: ' + amr.weaknesses]);
+  } else if (cl.domains) {
+    // Domain RoB tools have no meaningful percentage (several ROBINS-I signalling
+    // questions are reverse-scored) — the reportable result is the overall judgement.
+    const ovj = clData['__overall_judgement__'] || '';
+    rows.push(['', 'OVERALL JUDGEMENT', '', ovj || 'Not assessed', '']);
   } else {
     const sc = checklistScore(p, ck);
     rows.push(['', 'TOTAL SCORE', '', (sc ? sc.pct + '%' : 'N/A'), '']);
@@ -21067,6 +21178,10 @@ evOn('h179', function (event) { importResultRecords(this); }); // import Embase/
 evOn('h180', function (event) { savePdfProxyOptIn(); });   // P5 — full-text PDF proxy consent toggle
 evOn('h189', function (event) { copyPaywalledStrategy('wos'); });   // Build tab — copy WoS strategy
 evOn('h190', function (event) { runPressReview(); });      // Build tab — PRESS peer review of the strategy
+// PICO edits change what PRESS element 1 checks against — re-assemble on change
+// (fires on blur, not per keystroke) so the review panel never shows a verdict
+// computed from an older question.
+evOn('h191', function (event) { assembleBuildQuery(); });
 
 // ── Handlers that closed over runtime data (hand-written) ─────────────────────
 //
