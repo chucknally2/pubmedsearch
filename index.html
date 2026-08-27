@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-bzwq8X5gEq1UEU7ddMuELwkGosVykFApomxee7FenXI='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-EsKrihvuQ0qS9C3undYUHTuJQDZZdsbGoE88fEIOBvo='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -6111,9 +6111,13 @@ function anthropicHeaders() {
 // the duplication. Fold it in here once you can regression-test the pipeline.
 // Gemini gets double the output budget: its 2.5 models spend "thinking" tokens
 // from the same pool, so a budget that fits the JSON alone can yield no text.
+// Anthropic gets a 16k floor for the same reason: Claude Opus 5 thinks by
+// default, and max_tokens caps thinking + response TOGETHER — a budget sized
+// for the JSON alone truncates it mid-answer once thinking spends from it.
+// max_tokens is a cap, not a spend: the extra headroom costs nothing unless used.
 async function modelGenerateText(systemPrompt, userText, maxTokens) {
   if (aiProvider === 'anthropic') {
-    const aBody = { model: aiModelAnthropic, max_tokens: maxTokens, messages: [{ role: 'user', content: userText }] };
+    const aBody = { model: aiModelAnthropic, max_tokens: Math.max(maxTokens, 16000), messages: [{ role: 'user', content: userText }] };
     if (systemPrompt) aBody.system = systemPrompt;
     const r = await aiFetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: anthropicHeaders(), body: JSON.stringify(aBody) });
     if (!r.ok) { const e1 = await r.json().catch(function(){return {};}); throw new Error('Anthropic ' + r.status + ': ' + ((e1.error && e1.error.message) || 'error')); }
@@ -19365,7 +19369,9 @@ async function aiRelevanceBatch(question, items) {
   } else if (aiProvider === 'anthropic') {
     const response = await aiFetch('https://api.anthropic.com/v1/messages', {
       method: 'POST', headers: anthropicHeaders(),
-      body: JSON.stringify({ model: aiModelAnthropic, max_tokens: 8000, system: prompts.systemPrompt,
+      // 16k, not 8k: Claude Opus 5 thinks by default and max_tokens caps
+      // thinking + response together — 8k could truncate the verdict JSON.
+      body: JSON.stringify({ model: aiModelAnthropic, max_tokens: 16000, system: prompts.systemPrompt,
         messages: [{ role: 'user', content: prompts.userPrompt }] })
     });
     if (!response.ok) { const e = await response.json().catch(function(){ return {}; }); throw new Error('Anthropic ' + response.status + ': ' + ((e.error && e.error.message) || 'unknown')); }
