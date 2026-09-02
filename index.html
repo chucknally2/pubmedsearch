@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-EsKrihvuQ0qS9C3undYUHTuJQDZZdsbGoE88fEIOBvo='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-LkRurxOyUhl1AnrcgLJ6/bh7FFa4Szcygx6+yhkF3dE='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -1217,6 +1217,7 @@ button:not(:disabled):active { filter: brightness(0.95); }
       <div style="display:flex;align-items:center;gap:14px;margin-top:11px;flex-wrap:wrap">
         <button data-evclick="h50" id="build-count-btn" style="font-size:12px;padding:9px 15px;border-radius:6px;border:1px solid var(--ev-border-strong);background:var(--ev-surface);color:var(--ev-link);cursor:pointer">&#128202; Preview live count</button>
         <span id="build-count-result" style="font-size:13px;color:var(--ev-text-body)"></span>
+        <span id="build-send-hint" style="margin-left:auto;font-size:11px;color:var(--ev-text-dim);text-align:right">&#9654; Run <b>&#128202; Preview live count</b> first &mdash; <b>Send to workbench</b> appears once the count succeeds</span>
         <button data-evclick="h51" id="build-send-btn" style="margin-left:auto;font-size:13px;padding:10px 18px;border-radius:6px;border:none;background:#22c55e;color:var(--ev-ok-bg);cursor:pointer;font-weight:650;display:none">Send to workbench &rarr;</button>
       </div>
       <div style="font-size:11px;color:var(--ev-text-dim);margin-top:8px">The count is the true number of PubMed records this strategy retrieves (NCBI History server). Aim for a manageable, comprehensive set &mdash; the coach above suggests adjustments.</div>
@@ -6666,6 +6667,10 @@ function buildPubmedQuery(includeDate, includeDesign) {
   return assemblePubmedFromBlocks(buildBlocks, picoInputs(), includeDate, includeDesign);
 }
 
+// The exact query string the last successful PubMed count preview ran against —
+// the send button stays visible while the assembled query still matches it.
+var buildCountedQuery = null;
+
 function assembleBuildQuery() {
   const q = buildPubmedQuery();
   const el = document.getElementById('build-assembled');
@@ -6681,9 +6686,20 @@ function assembleBuildQuery() {
     }
     renderPressPanel();
   }
-  // counts are stale once the query changes
-  document.getElementById('build-count-result').innerHTML = '';
-  document.getElementById('build-send-btn').style.display = 'none';
+  // Counts go stale only when the EXECUTED query actually changes. This must
+  // compare, not hide unconditionally: PICO edits and sign-off re-renders call
+  // assembleBuildQuery without altering the query, and hiding the send button
+  // on those wiped it right after a successful count (user-reported).
+  if (buildCountedQuery !== q) {
+    const cr = document.getElementById('build-count-result');
+    if (cr) cr.innerHTML = '';
+    const sb = document.getElementById('build-send-btn');
+    if (sb) sb.style.display = 'none';
+    // Signpost the unlock path — without it, a hidden send button reads as a
+    // missing feature rather than "run the count preview first".
+    const hint = document.getElementById('build-send-hint');
+    if (hint) hint.style.display = '';
+  }
 }
 
 // Render the numbered search-set view (PRESS / PRISMA-S style) under the flattened
@@ -6883,7 +6899,10 @@ async function previewBuildCount() {
                : count > 5000 ? ' \u2014 broad; consider tightening or adding a concept'
                : ' \u2014 a workable range';
     resEl.innerHTML = '<b style="color:' + colour + '">' + count.toLocaleString() + '</b> PubMed records<span style="color:var(--ev-text-dim)">' + advice + '</span>';
+    buildCountedQuery = q;   // the send button stays until the query drifts from this
     document.getElementById('build-send-btn').style.display = 'inline-block';
+    const hintOk = document.getElementById('build-send-hint');
+    if (hintOk) hintOk.style.display = 'none';   // signpost served its purpose
   } catch(e) {
     resEl.innerHTML = '<span style="color:#ef4444">\u2715 ' + esc(ncbiFriendlyError(e)) + '</span>';
   } finally {
