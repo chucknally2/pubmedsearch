@@ -10,7 +10,7 @@
      connect-src is an allowlist of the scholarly-database + AI-provider APIs the app
      calls — an injected script cannot beacon a stolen key to an arbitrary host. Inline
      STYLES stay allowed (thousands are generated at runtime; not a script vector). -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-LkRurxOyUhl1AnrcgLJ6/bh7FFa4Szcygx6+yhkF3dE='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; form-action 'self'; script-src 'self' 'sha256-VUURLyC2WvkGJbNw3DY6/M76BN8UgbT46oOkTbLXnfQ=' 'sha256-gdQqaadEzJARE/8mRo4Llbin7BNcTXQbHn3x1t/e568='; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://*.ncbi.nlm.nih.gov https://europepmc.org https://www.ebi.ac.uk https://api.crossref.org https://api.openalex.org https://openalex.org https://api.semanticscholar.org https://api.elsevier.com https://clinicaltrials.gov https://api.openai.com https://api.anthropic.com https://generativelanguage.googleapis.com https://api.x.ai https://api.unpaywall.org https://api.openaccessbutton.org https://libkey.io https://api.libkey.io https://doi.org https://retractionwatch.com https://api.allorigins.win https://api.codetabs.com">
 <title>Evidentum — Systematic Review Workbench</title>
 <meta name="theme-color" content="#0a0f1c">
 <!-- Theme init — set data-theme on <html> BEFORE first paint to avoid a flash.
@@ -888,7 +888,8 @@ button:not(:disabled):active { filter: brightness(0.95); }
       <select id="anthropic-model-select" aria-label="Anthropic model" data-evchange="h22"
         style="width:100%;box-sizing:border-box;padding:6px 10px;font-size:11px;color:var(--ev-text-body);background:var(--ev-surface);border:1px solid var(--ev-border-strong);border-radius:6px;margin-bottom:4px" title="Anthropic model">
         <option value="claude-opus-5">Claude Opus 5 — flagship (default)</option>
-        <option value="claude-fable-5">Claude Fable 5 — most capable frontier model</option>
+        <option value="claude-fable-5-1">Claude Fable 5.1 — most capable frontier model</option>
+        <option value="claude-fable-5">Claude Fable 5 — previous frontier model</option>
         <option value="claude-opus-4-8">Claude Opus 4.8 — previous flagship</option>
         <option value="claude-sonnet-5">Claude Sonnet 5 — near-Opus capability, lower cost</option>
         <option value="claude-sonnet-4-6">Claude Sonnet 4.6 — faster, cheaper</option>
@@ -6081,7 +6082,7 @@ async function grokGenerate(systemPrompt, userText, maxTokens, opts) {
 }
 
 // Extract the answer text from an Anthropic Messages API response.
-// Thinking-capable models (Claude Fable 5 has thinking ALWAYS on; Opus/Sonnet
+// Thinking-capable models (Claude Fable 5 / 5.1 have thinking ALWAYS on; Opus/Sonnet
 // when thinking is enabled) return a `thinking` block FIRST, so content[0].text
 // is undefined and the old content[0] read silently produced '{}' — an
 // appraisal that "succeeded" with no data. Concatenate every text block instead.
@@ -17270,7 +17271,7 @@ function updateKeyFieldHints() {
 // Custom / older ids remain first-class: effectiveModel() reads the free-text box
 // and modelShortName() falls back to the raw id, so nothing here restricts what a
 // user can type or what a saved id can be.
-var MODEL_CATALOG_UPDATED = '2026-08-27';
+var MODEL_CATALOG_UPDATED = '2026-09-02';
 var MODEL_CATALOG = {
   openai: { label: 'OpenAI', 'default': 'gpt-5.6', models: [
     { id: 'gpt-5.6',      name: 'GPT-5.6',      note: 'flagship, most capable (default)' },
@@ -17284,7 +17285,8 @@ var MODEL_CATALOG = {
   ]},
   anthropic: { label: 'Anthropic', 'default': 'claude-opus-5', models: [
     { id: 'claude-opus-5',     name: 'Claude Opus 5',     note: 'flagship (default)' },
-    { id: 'claude-fable-5',    name: 'Claude Fable 5',    note: 'most capable frontier model' },
+    { id: 'claude-fable-5-1',  name: 'Claude Fable 5.1',  note: 'most capable frontier model' },
+    { id: 'claude-fable-5',    name: 'Claude Fable 5',    note: 'previous frontier model' },
     { id: 'claude-opus-4-8',   name: 'Claude Opus 4.8',   note: 'previous flagship' },
     { id: 'claude-sonnet-5',   name: 'Claude Sonnet 5',   note: 'near-Opus capability, lower cost' },
     { id: 'claude-sonnet-4-6', name: 'Claude Sonnet 4.6', note: 'faster, cheaper' },
@@ -18783,7 +18785,7 @@ async function callOpenAIWithText(text, prompts, p, textSource) {
     // ── Anthropic Messages API ──────────────────────────────────────────
     const aBody = {
       model: aiModelAnthropic,
-      // Thinking models (Fable 5 always; Opus/Sonnet when enabled) spend
+      // Thinking models (Fable 5 / 5.1 always; Opus/Sonnet when enabled) spend
       // thinking tokens from this same budget before the JSON — 8000 could
       // be mostly thinking and truncate the appraisal. 16000 leaves room.
       max_tokens: 16000,
